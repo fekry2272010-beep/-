@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مدرسة الشهيد اسحق زكريا</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>مدرسة الشهيد اسحق زكريا</h1>
+            <p>منصتك التعليمية الرقمية للمستقبل</p>
+        </div>
+    </header>
+
+    <nav>
+        <button onclick="showSection('home')">الرئيسية</button>
+        <button onclick="showSection('videos')">فيديوهات الشرح</button>
+        <button onclick="showSection('exams')">معلومات الامتحانات</button>
+    </nav>
+
+    <div class="container content">
+        
+        <section id="home" class="active-section">
+            <h2>مرحباً بكم في منصتنا التعليمية</h2>
+            <p>تهدف هذه المنصة إلى تسهيل العملية التعليمية لطلاب مدرسة الشهيد اسحاق زكريا، حيث يمكنك متابعة دروسك ومعرفة آخر مستجدات الجداول والامتحانات من مكان واحد.</p>
+            
+            <div class="features">
+                <div class="card" style="text-align: center;">
+                    <h3>👤 مدير المدرسة</h3>
+                    <img src="https://scontent.fcai19-5.fna.fbcdn.net/v/t39.30808-6/544882601_2485061411876070_5477629306291603385_n.jpg?stp=dst-jpg_tt6&cstp=mx1068x1600&ctp=s1068x1600&_nc_cat=100&ccb=1-7&_nc_sid=aa7b47&_nc_eui2=AeEP1DAgLFxDElqSBvCW92E3hFsIWDSS60CEWwhYNJLrQBrtoX3iitPzcMD7s4wMLBTcc_bL4-IEWcpEKs6FFFMX&_nc_ohc=mwWndvx6Kv4Q7kNvwHSXTgo&_nc_oc=AdqPVwyU4JBeB8jUAZSPhdwU_xFZXM7emU9D676WiSB2byCjyh7Z9R-xZyujKek7Uu0&_nc_zt=23&_nc_ht=scontent.fcai19-5.fna&_nc_gid=VnsnVNWNrx1Nk7rUWBmetg&_nc_ss=7b2a8&oh=00_Af--eb1h4JY3EEvW42FBbh2DK8GozMwF0nd1NREr034nJw&oe=6A30BB01" alt="" style="width: 130px; height: 130px; border-radius: 50%; object-fit: cover; margin: 10px auto; display: block; border: 3px solid #000000; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                    <p style="font-weight: bold; margin-top: 10px; font-size: 1.1rem;">الأستاذ / محمد عبدالعزيز نصار</p>
+                </div>
+
+                <div class="card">
+                    <h3>فيديوهات متجددة</h3>
+                    <p>شروحات وافية لجميع المواد الدراسية بأقلام نخبة من معلمينا.</p>
+                </div>
+                
+                <div class="card">
+                    <h3>أحدث الأخبار</h3>
+                    <p>تابع جداول الامتحانات والتعليمات الرسمية أولاً بأول.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="videos" style="display:none;">
+            <h2>فيديوهات الشرح الدراسية</h2>
+            <div class="grid">
+                <div class="card video-card">
+                    <h3>شرح درس اللغة العربية</h3>
+                    <p>الصف الأول الثانوي - أ/ محمد أحمد</p>
+                    <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY" frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="card video-card">
+                    <h3>شرح وحدة الرياضيات الأولى</h3>
+                    <p>الصف الثاني الثانوي - أ/ محمود علي</p>
+                    <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <section id="exams" style="display:none;">
+            <h2>جداول ومعلومات الامتحانات</h2>
+            <div class="exam-info">
+                <div class="card warning-card">
+                    <h3>⚠️ تنبيه هام بشأن امتحانات الفصل الدراسي</h3>
+                    <p>يرجى العلم أن الامتحانات تبدأ في تمام الساعة التاسعة صباحاً، ولن يُسمح بدخول الطلاب بعد مرور 15 دقيقة من اللجنة.</p>
+                </div>
+                
+                <h3>جدول امتحانات الصف الأول الثانوي</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>اليوم والتاريخ</th>
+                            <th>المادة</th>
+                            <th>الزمن</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>الأحد 2027-1-10</td>
+                            <td>اللغة العربية</td>
+                            <td>من 9:00 إلى 12:00</td>
+                        </tr>
+                        <tr>
+                            <td>الثلاثاء2027-1-11</td>
+                            <td>الرياضيات</td>
+                            <td>من 9:00 إلى 11:30</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>جميع الحقوق محفوظة © مدرسة الشهيد اسحق زكريا 2026</p>
+        <a href="elshahid.isaac.zakaria.school@gmail.com">elshahid.isaac.zakaria.school@gmail.com</a><br><a href="tel:0453731179">0453731179</a>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="//code.tidio.co/fsokw5kv8ntzvahlxydlzu9uz4orvh2u.js" async></script>
+<div class="card location-card" style="text-align: center; margin-top: 20px;">
+   </div>
+<!-- كارت موقع المدرسة الجغرافي بالإحداثيات الدقيقة الجديدة والحجم الكبير -->
+<div class="card" style="text-align: center; width: 100%; max-width: 1000px; margin: 20px auto;">
+    <h3>📍 موقع المدرسة الجغرافي</h3>
+    <p style="margin-bottom: 15px; font-weight: bold; font-size: 1.2rem;">جمهورية مصر العربية - البريجات مركز كوم حمادة البحيرة</p>
+    <div class="map-container" style="overflow: hidden; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+        <iframe 
+            src="https://maps.google.com/maps?q=30.498603546846947,30.82446950533928&z=17&output=embed" 
+            width="100%" 
+            height="500" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy">
+        </iframe>
+    </div>
+</div>
+</div>
+</body>
+</html>
