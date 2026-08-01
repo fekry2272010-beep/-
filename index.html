@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مدرسة الشهيد اسحق زكريا</title>
+    <title>مدرسة الشهيد اسحق زكريا الرقمية</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,53 +15,47 @@
         </div>
     </header>
 
-    <nav>
-        <button onclick="showSection('home')">الرئيسية</button>
-        <button onclick="showSection('videos')">فيديوهات الشرح</button>
-        <button onclick="showSection('exams')">معلومات الامتحانات</button>
+    <!-- قائمة التنقل الرئيسية -->
+    <nav class="main-nav">
+        <button class="active" onclick="showSection('home', this)">الرئيسية</button>
+        <button onclick="showSection('videos', this)">فيديوهات الشرح</button>
+        <button onclick="showSection('exams', this)">معلومات الامتحانات</button>
     </nav>
-
-    <!-- شريط تنقل جانبي مستطيل يظهر فقط في قسم الفيديوهات -->
-    <div id="videoSidebar" class="video-nav-sidebar" style="display: none;">
-        <span style="color: #ffffff; font-size: 0.75rem; text-align: center; font-weight: bold; border-bottom: 1px solid #dc3545; padding-bottom: 4px;">انتقال سريع</span>
-        <button class="video-nav-btn" onclick="scrollToVideo('video1')">الصف الأول</button>
-        <button class="video-nav-btn" onclick="scrollToVideo('video3')">الصف الثاني</button>
-        <button class="video-nav-btn" onclick="scrollToVideo('video6')">الصف الثالث</button>
-    </div>
 
     <div class="container content">
         
         <!-- قسم الرئيسية -->
-        <section id="home" class="active-section">
+        <section id="home">
             <h2>مرحباً بكم في منصتنا التعليمية</h2>
-            <p>تهدف هذه المنصة إلى تسهيل العملية التعليمية لطلاب مدرسة الشهيد اسحاق زكريا، حيث يمكنك متابعة دروسك ومعرفة آخر مستجدات الجداول والامتحانات من مكان واحد.</p>
+            <p style="font-size: 1.05rem; color: #555;">تهدف هذه المنصة إلى تسهيل العملية التعليمية لطلاب مدرسة الشهيد اسحاق زكريا، حيث يمكنك متابعة دروسك ومعرفة آخر مستجدات الجداول والامتحانات من مكان واحد.</p>
             
             <div class="features">
                 <div class="card" style="text-align: center;">
                     <h3>👤 مدير المدرسة</h3>
-                    <img src="https://scontent-hbe1-2.xx.fbcdn.net/v/t39.30808-6/758671263_122093431389430827_2897028690545565915_n.jpg?stp=dst-jpg_tt6&cstp=mx1068x1600&ctp=s1068x1600&_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=gSCUAjCq9IkQ7kNvwELRBzW&_nc_oc=AdpqdvPIW7FnrFizvbn67Y2bZlgl2aqcOp1ajlKkZSOXPEsm6gV45va6hs5Y9FmFXVo&_nc_zt=23&_nc_ht=scontent-hbe1-2.xx&_nc_gid=8vqg_3j5k6N0AhPeRriN1A&_nc_ss=7b2a8&oh=00_AQGrZCTFYQ25MDQbQwSbHBpCVctftkZmuaDdQdcJINfdlA&oe=6A72727A" alt="مدير المدرسة" style="width: 130px; height: 130px; border-radius: 50%; object-fit: cover; margin: 10px auto; display: block; border: 3px solid #000000; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-                    <p style="font-weight: bold; margin-top: 10px; font-size: 1.1rem;">الأستاذ / محمد عبدالعزيز نصار</p>
+                    <img src="https://scontent-hbe1-2.xx.fbcdn.net/v/t39.30808-6/758671263_122093431389430827_2897028690545565915_n.jpg?stp=dst-jpg_tt6&cstp=mx1068x1600&ctp=s1068x1600&_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=gSCUAjCq9IkQ7kNvwELRBzW&_nc_oc=AdpqdvPIW7FnrFizvbn67Y2bZlgl2aqcOp1ajlKkZSOXPEsm6gV45va6hs5Y9FmFXVo&_nc_zt=23&_nc_ht=scontent-hbe1-2.xx&_nc_gid=8vqg_3j5k6N0AhPeRriN1A&_nc_ss=7b2a8&oh=00_AQGrZCTFYQ25MDQbQwSbHBpCVctftkZmuaDdQdcJINfdlA&oe=6A72727A" alt="مدير المدرسة" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin: 15px auto; display: block; border: 3px solid #dc3545; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                    <p style="font-weight: bold; margin-top: 10px; font-size: 1.1rem; color: #000;">الأستاذ / محمد عبدالعزيز نصار</p>
                 </div>
 
                 <div class="card">
-                    <h3>فيديوهات متجددة</h3>
-                    <p>شروحات وافية لجميع المواد الدراسية بأقلام نخبة من معلمينا.</p>
+                    <h3>🎬 فيديوهات متجددة</h3>
+                    <p>شروحات وافية لجميع المواد الدراسية بأقلام نخبة من معلمينا الكرام.</p>
                 </div>
                 
                 <div class="card">
-                    <h3>أحدث الأخبار</h3>
-                    <p>تابع جداول الامتحانات والتعليمات الرسمية أولاً بأول.</p>
+                    <h3>📢 أحدث الأخبار</h3>
+                    <p>تابع جداول الامتحانات والتعليمات الرسمية الصادرة من الإدارة أولاً بأول.</p>
                 </div>
             </div>
 
-            <div class="card" style="text-align: center; width: 100%; max-width: 1000px; margin: 25px auto;">
+            <!-- كارت الموقع الجغرافي -->
+            <div class="card" style="text-align: center; width: 100%; max-width: 1000px; margin: 30px auto 0 auto;">
                 <h3>📍 موقع المدرسة الجغرافي</h3>
-                <p style="margin-bottom: 15px; font-weight: bold; font-size: 1.1rem;">جمهورية مصر العربية - البريجات مركز كوم حمادة البحيرة</p>
-                <div style="overflow: hidden; border-radius: 8px;">
+                <p style="margin-bottom: 15px; font-weight: 600; font-size: 1.1rem;">جمهورية مصر العربية - البريجات مركز كوم حمادة البحيرة</p>
+                <div style="overflow: hidden; border-radius: 12px;">
                     <iframe 
                         src="https://maps.google.com/maps?q=30.498603546846947,30.82446950533928&z=17&output=embed" 
                         width="100%" 
-                        height="450" 
+                        height="400" 
                         style="border:0;" 
                         allowfullscreen="" 
                         loading="lazy">
@@ -70,13 +64,19 @@
             </div>
         </section>
 
-        <!-- قسم الفيديوهات (مقسم فيديوين بجانب بعض بكل صف) -->
+        <!-- قسم الفيديوهات -->
         <section id="videos" style="display:none;">
             <h2>فيديوهات الشرح الدراسية</h2>
-            
-            <div class="videos-grid">
-                <!-- فيديو 1 -->
-                <div class="card video-card" id="video1">
+
+            <!-- شريط تنقل فرعي لفصل الصفوف الدراسية -->
+            <div class="sub-nav">
+                <button class="active-sub" onclick="filterGrade('grade1-videos', this)">الصف الأول الثانوي</button>
+                <button onclick="filterGrade('grade2-videos', this)">الصف الثاني الثانوي</button>
+            </div>
+
+            <!-- فيديوهات الصف الأول الثانوي (فيديوين بكل صف) -->
+            <div id="grade1-videos" class="videos-grid">
+                <div class="card video-card">
                     <h3>شرح درس اللغة العربية</h3>
                     <p>الصف الأول الثانوي - أ/ محمد أحمد</p>
                     <div class="video-container">
@@ -84,8 +84,7 @@
                     </div>
                 </div>
 
-                <!-- فيديو 2 -->
-                <div class="card video-card" id="video2">
+                <div class="card video-card">
                     <h3>شرح الكيمياء العامة</h3>
                     <p>الصف الأول الثانوي - أ/ حسن علي</p>
                     <div class="video-container">
@@ -93,8 +92,18 @@
                     </div>
                 </div>
 
-                <!-- فيديو 3 -->
-                <div class="card video-card" id="video3">
+                <div class="card video-card">
+                    <h3>درس التاريخ الحديث</h3>
+                    <p>الصف الأول الثانوي - أ/ سامح فؤاد</p>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="YouTube video player" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- فيديوهات الصف الثاني الثانوي (فيديوين بكل صف) -->
+            <div id="grade2-videos" class="videos-grid" style="display: none;">
+                <div class="card video-card">
                     <h3>شرح وحدة الرياضيات الأولى</h3>
                     <p>الصف الثاني الثانوي - أ/ محمود علي</p>
                     <div class="video-container">
@@ -102,8 +111,7 @@
                     </div>
                 </div>
 
-                <!-- فيديو 4 -->
-                <div class="card video-card" id="video4">
+                <div class="card video-card">
                     <h3>مراجعة الأحياء - الفصل الأول</h3>
                     <p>الصف الثاني الثانوي - أ/ مصطفى سعيد</p>
                     <div class="video-container">
@@ -111,55 +119,9 @@
                     </div>
                 </div>
 
-                <!-- فيديو 5 -->
-                <div class="card video-card" id="video5">
+                <div class="card video-card">
                     <h3>مبادئ الجغرافيا الطبيعية</h3>
                     <p>الصف الثاني الثانوي - أ/ ياسر حسين</p>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="YouTube video player" allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <!-- فيديو 6 -->
-                <div class="card video-card" id="video6">
-                    <h3>شرح درس الفيزياء</h3>
-                    <p>الصف الثالث الثانوي - أ/ أحمد محمود</p>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="YouTube video player" allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <!-- فيديو 7 -->
-                <div class="card video-card" id="video7">
-                    <h3>شرح قواعد اللغة الإنجليزية</h3>
-                    <p>الصف الثالث الثانوي - أ/ خالد إبراهيم</p>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="YouTube video player" allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <!-- فيديو 8 -->
-                <div class="card video-card" id="video8">
-                    <h3>درس التاريخ الحديث</h3>
-                    <p>الصف الأول الثانوي - أ/ سامح فؤاد</p>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="YouTube video player" allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <!-- فيديو 9 -->
-                <div class="card video-card" id="video9">
-                    <h3>شرح الفلسفة والمنطق</h3>
-                    <p>الصف الثالث الثانوي - أ/ عادل كمال</p>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="YouTube video player" allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <!-- فيديو 10 -->
-                <div class="card video-card" id="video10">
-                    <h3>مراجعة الرياضيات المتقدمة</h3>
-                    <p>الصف الثالث الثانوي - أ/ أيمن طارق</p>
                     <div class="video-container">
                         <iframe src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="YouTube video player" allowfullscreen></iframe>
                     </div>
@@ -172,11 +134,11 @@
             <h2>جداول ومعلومات الامتحانات</h2>
             <div class="exam-info">
                 <div class="card warning-card">
-                    <h3>⚠️ تنبيه هام بشأن امتحانات الفصل الدراسي</h3>
-                    <p>يرجى العلم أن الامتحانات تبدأ في تمام الساعة التاسعة صباحاً، ولن يُسمح بدخول الطلاب بعد مرور 15 دقيقة من اللجنة.</p>
+                    <h3 style="margin-top: 0; color: #dc3545;">⚠️ تنبيه هام بشأن امتحانات الفصل الدراسي</h3>
+                    <p style="margin-bottom: 0;">يرجى العلم أن الامتحانات تبدأ في تمام الساعة التاسعة صباحاً، ولن يُسمح بدخول الطلاب بعد مرور 15 دقيقة من بدء اللجنة.</p>
                 </div>
                 
-                <h3 style="margin-top: 25px;">جدول امتحانات الصف الأول الثانوي</h3>
+                <h3 style="margin-top: 30px;">جدول امتحانات الصف الأول الثانوي</h3>
                 <table>
                     <thead>
                         <tr>
@@ -205,7 +167,7 @@
 
     <footer>
         <p>جميع الحقوق محفوظة © مدرسة الشهيد اسحق زكريا 2026</p>
-        <a href="mailto:elshahid.isaac.zakaria.school@gmail.com">elshahid.isaac.zakaria.school@gmail.com</a><br>
+        <a href="mailto:elshahid.isaac.zakaria.school@gmail.com">elshahid.isaac.zakaria.school@gmail.com</a> | 
         <a href="tel:0453731179">0453731179</a>
     </footer>
 
