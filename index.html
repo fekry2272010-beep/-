@@ -21,6 +21,14 @@
         <button onclick="showSection('exams')">معلومات الامتحانات</button>
     </nav>
 
+    <!-- شريط تنقل جانبي مستطيل يظهر فقط في قسم الفيديوهات -->
+    <div id="videoSidebar" class="video-nav-sidebar" style="display: none;">
+        <span style="color: #ffffff; font-size: 0.75rem; text-align: center; font-weight: bold; border-bottom: 1px solid #dc3545; padding-bottom: 4px;">انتقال سريع</span>
+        <button class="video-nav-btn" onclick="scrollToVideo('video1')">الصف الأول</button>
+        <button class="video-nav-btn" onclick="scrollToVideo('video3')">الصف الثاني</button>
+        <button class="video-nav-btn" onclick="scrollToVideo('video6')">الصف الثالث</button>
+    </div>
+
     <div class="container content">
         
         <!-- قسم الرئيسية -->
@@ -46,15 +54,14 @@
                 </div>
             </div>
 
-            <!-- كارت موقع المدرسة الجغرافي -->
-            <div class="card" style="text-align: center; width: 100%; max-width: 1000px; margin: 20px auto;">
+            <div class="card" style="text-align: center; width: 100%; max-width: 1000px; margin: 25px auto;">
                 <h3>📍 موقع المدرسة الجغرافي</h3>
-                <p style="margin-bottom: 15px; font-weight: bold; font-size: 1.2rem;">جمهورية مصر العربية - البريجات مركز كوم حمادة البحيرة</p>
-                <div class="map-container" style="overflow: hidden; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                <p style="margin-bottom: 15px; font-weight: bold; font-size: 1.1rem;">جمهورية مصر العربية - البريجات مركز كوم حمادة البحيرة</p>
+                <div style="overflow: hidden; border-radius: 8px;">
                     <iframe 
                         src="https://maps.google.com/maps?q=30.498603546846947,30.82446950533928&z=17&output=embed" 
                         width="100%" 
-                        height="500" 
+                        height="450" 
                         style="border:0;" 
                         allowfullscreen="" 
                         loading="lazy">
@@ -63,78 +70,99 @@
             </div>
         </section>
 
-        <!-- قسم الفيديوهات (10 فيديوهات) -->
+        <!-- قسم الفيديوهات (مقسم فيديوين بجانب بعض بكل صف) -->
         <section id="videos" style="display:none;">
             <h2>فيديوهات الشرح الدراسية</h2>
-            <div class="grid">
+            
+            <div class="videos-grid">
                 <!-- فيديو 1 -->
-                <div class="card video-card">
+                <div class="card video-card" id="video1">
                     <h3>شرح درس اللغة العربية</h3>
                     <p>الصف الأول الثانوي - أ/ محمد أحمد</p>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="YouTube video player" allowfullscreen></iframe>
+                    </div>
                 </div>
 
                 <!-- فيديو 2 -->
-                <div class="card video-card">
-                    <h3>شرح وحدة الرياضيات الأولى</h3>
-                    <p>الصف الثاني الثانوي - أ/ محمود علي</p>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <div class="card video-card" id="video2">
+                    <h3>شرح الكيمياء العامة</h3>
+                    <p>الصف الأول الثانوي - أ/ حسن علي</p>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="YouTube video player" allowfullscreen></iframe>
+                    </div>
                 </div>
 
                 <!-- فيديو 3 -->
-                <div class="card video-card">
-                    <h3>شرح درس الفيزياء</h3>
-                    <p>الصف الثالث الثانوي - أ/ أحمد محمود</p>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <div class="card video-card" id="video3">
+                    <h3>شرح وحدة الرياضيات الأولى</h3>
+                    <p>الصف الثاني الثانوي - أ/ محمود علي</p>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="YouTube video player" allowfullscreen></iframe>
+                    </div>
                 </div>
 
                 <!-- فيديو 4 -->
-                <div class="card video-card">
-                    <h3>شرح الكيمياء العامة</h3>
-                    <p>الصف الأول الثانوي - أ/ حسن علي</p>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <div class="card video-card" id="video4">
+                    <h3>مراجعة الأحياء - الفصل الأول</h3>
+                    <p>الصف الثاني الثانوي - أ/ مصطفى سعيد</p>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="YouTube video player" allowfullscreen></iframe>
+                    </div>
                 </div>
 
                 <!-- فيديو 5 -->
-                <div class="card video-card">
-                    <h3>مراجعة الأحياء - الفصل الأول</h3>
-                    <p>الصف الثاني الثانوي - أ/ مصطفى سعيد</p>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <div class="card video-card" id="video5">
+                    <h3>مبادئ الجغرافيا الطبيعية</h3>
+                    <p>الصف الثاني الثانوي - أ/ ياسر حسين</p>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="YouTube video player" allowfullscreen></iframe>
+                    </div>
                 </div>
 
                 <!-- فيديو 6 -->
-                <div class="card video-card">
-                    <h3>شرح قواعد اللغة الإنجليزية</h3>
-                    <p>الصف الثالث الثانوي - أ/ خالد إبراهيم</p>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <div class="card video-card" id="video6">
+                    <h3>شرح درس الفيزياء</h3>
+                    <p>الصف الثالث الثانوي - أ/ أحمد محمود</p>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="YouTube video player" allowfullscreen></iframe>
+                    </div>
                 </div>
 
                 <!-- فيديو 7 -->
-                <div class="card video-card">
-                    <h3>درس التاريخ الحديث</h3>
-                    <p>الصف الأول الثانوي - أ/ سامح فؤاد</p>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <div class="card video-card" id="video7">
+                    <h3>شرح قواعد اللغة الإنجليزية</h3>
+                    <p>الصف الثالث الثانوي - أ/ خالد إبراهيم</p>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="YouTube video player" allowfullscreen></iframe>
+                    </div>
                 </div>
 
                 <!-- فيديو 8 -->
-                <div class="card video-card">
-                    <h3>مبادئ الجغرافيا الطبيعية</h3>
-                    <p>الصف الثاني الثانوي - أ/ ياسر حسين</p>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <div class="card video-card" id="video8">
+                    <h3>درس التاريخ الحديث</h3>
+                    <p>الصف الأول الثانوي - أ/ سامح فؤاد</p>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="YouTube video player" allowfullscreen></iframe>
+                    </div>
                 </div>
 
                 <!-- فيديو 9 -->
-                <div class="card video-card">
+                <div class="card video-card" id="video9">
                     <h3>شرح الفلسفة والمنطق</h3>
                     <p>الصف الثالث الثانوي - أ/ عادل كمال</p>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="YouTube video player" allowfullscreen></iframe>
+                    </div>
                 </div>
 
                 <!-- فيديو 10 -->
-                <div class="card video-card">
+                <div class="card video-card" id="video10">
                     <h3>مراجعة الرياضيات المتقدمة</h3>
                     <p>الصف الثالث الثانوي - أ/ أيمن طارق</p>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="YouTube video player" allowfullscreen></iframe>
+                    </div>
                 </div>
             </div>
         </section>
@@ -148,7 +176,7 @@
                     <p>يرجى العلم أن الامتحانات تبدأ في تمام الساعة التاسعة صباحاً، ولن يُسمح بدخول الطلاب بعد مرور 15 دقيقة من اللجنة.</p>
                 </div>
                 
-                <h3>جدول امتحانات الصف الأول الثانوي</h3>
+                <h3 style="margin-top: 25px;">جدول امتحانات الصف الأول الثانوي</h3>
                 <table>
                     <thead>
                         <tr>
