@@ -15,7 +15,7 @@ body {
     margin: 0;
     padding: 0;
     /* خلفية الموقع بمركز الصورة وتثبيتها أثناء التمرير */
-    background: url('https://scontent-hbe1-2.xx.fbcdn.net/v/t39.30808-6/480838186_1130386618949078_7749007421946059530_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_ohc=xW0e21m4K04Q7kNvwF80qfB&_nc_oc=Adp7zQ3-e8mD1X0T1wN2aO7-qC6Z1p_14xX1A0C0E0G0I0K0M0O0Q0S0U0V0W0X0&_nc_zt=23&_nc_ht=scontent-hbe1-2.xx&_nc_gid=A_example&oh=00_AYB...&oe=67C00000') no-repeat center center fixed;
+    background: url('https://scontent-hbe1-1.xx.fbcdn.net/v/t39.30808-6/762998212_122094076419430827_379432906399384915_n.jpg?stp=dst-jpg_tt6&cstp=mx1200x1549&ctp=p526x296&_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_ohc=hPnFqpqPJDIQ7kNvwGOCh3M&_nc_oc=AdqnlLhWp30-hfOhTx2SpmasAdAcNRb3Z6cChnWbvP7ZcGhDZvypmKTmnF-8dSsH8lE&_nc_zt=23&_nc_ht=scontent-hbe1-1.xx&_nc_gid=fxGqyYK8k5RDbL5rAyOX1g&_nc_ss=7b2a8&oh=00_AQEc1RfdV2EuHVMt1ec9R9Qbt6H9WzypNlBSp6iX7gkkRA&oe=6A7409CA') no-repeat center center fixed;
     background-size: cover;
     color: var(--text-main);
     line-height: 1.6;
