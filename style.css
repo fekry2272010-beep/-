@@ -3,7 +3,7 @@
     --dark-red: #b02a37;
     --dark-bg: #111111;
     --light-bg: #f4f6f9;
-    --card-bg: rgba(255, 255, 255, 0.92);
+    --card-bg: #ffffff;
     --text-main: #2b2d42;
     --text-muted: #6c757d;
     --border-radius: 16px;
@@ -14,14 +14,10 @@ body {
     font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
     margin: 0;
     padding: 0;
-    /* خلفية الموقع بمركز الصورة وتثبيتها أثناء التمرير */
-    background: url('https://scontent-hbe1-1.xx.fbcdn.net/v/t39.30808-6/762998212_122094076419430827_379432906399384915_n.jpg?stp=dst-jpg_tt6&cstp=mx1200x1549&ctp=p526x296&_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_ohc=hPnFqpqPJDIQ7kNvwGOCh3M&_nc_oc=AdqnlLhWp30-hfOhTx2SpmasAdAcNRb3Z6cChnWbvP7ZcGhDZvypmKTmnF-8dSsH8lE&_nc_zt=23&_nc_ht=scontent-hbe1-1.xx&_nc_gid=fxGqyYK8k5RDbL5rAyOX1g&_nc_ss=7b2a8&oh=00_AQEc1RfdV2EuHVMt1ec9R9Qbt6H9WzypNlBSp6iX7gkkRA&oe=6A7409CA') no-repeat center center fixed;
-    background-size: cover;
+    background-color: var(--light-bg);
     color: var(--text-main);
     line-height: 1.6;
 }
-
-/* في حال أردت تغيير رابط صورة الخلفية من فيسبوك مستقبلاً، يمكنك تعديل الرابط الذي داخل url() في الأعلى فقط */
 
 .container {
     width: 90%;
@@ -29,16 +25,14 @@ body {
     margin: auto;
 }
 
-/* الهيدر الحديث الشفاف مع بلور */
+/* الهيدر الحديث */
 header {
-    background: rgba(0, 0, 0, 0.75);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
     color: #ffffff;
     padding: 40px 0;
     text-align: center;
     border-bottom: 4px solid var(--primary-red);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 header h1 {
@@ -46,30 +40,26 @@ header h1 {
     font-size: 2.5rem;
     font-weight: 800;
     letter-spacing: -0.5px;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
 header p {
     margin-top: 8px;
-    color: #ff4d5e;
+    color: var(--primary-red);
     font-size: 1.1rem;
     font-weight: 600;
 }
 
-/* شريط التنقل الرئيسي الشفاف مع البلور */
+/* قائمة التنقل الرئيسية المودرن */
 nav.main-nav {
-    background: rgba(0, 0, 0, 0.75);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    background: #000000;
     display: flex;
     justify-content: center;
     gap: 10px;
-    padding: 12px;
+    padding: 10px;
     position: sticky;
     top: 0;
     z-index: 1000;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 nav.main-nav button {
@@ -87,20 +77,17 @@ nav.main-nav button {
 nav.main-nav button:hover, nav.main-nav button.active {
     background: var(--primary-red);
     color: #ffffff;
-    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.5);
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.4);
 }
 
-/* المحتوى الرئيسي الزجاجي الشفاف */
+/* المحتوى الرئيسي */
 .content {
     margin-top: 40px;
     margin-bottom: 120px;
     background: var(--card-bg);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
     padding: 40px;
     border-radius: var(--border-radius);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
 }
 
 h2 {
@@ -122,22 +109,20 @@ h2::after {
     border-radius: 2px;
 }
 
-/* قائمة التنقل الفرعية للفيديوهات - شفافة مع بلور */
+/* قائمة التنقل الفرعية للفيديوهات (مستوحاة من القائمة الرئيسية) */
 .sub-nav {
     display: flex;
     justify-content: center;
     gap: 15px;
-    background: rgba(255, 255, 255, 0.65);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: #f8f9fa;
     padding: 12px;
     border-radius: 12px;
     margin: 25px 0 35px 0;
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    border: 2px solid #eee;
 }
 
 .sub-nav button {
-    background: rgba(255, 255, 255, 0.9);
+    background: #ffffff;
     color: #000000;
     border: 2px solid #000000;
     padding: 10px 25px;
@@ -152,7 +137,7 @@ h2::after {
     background: var(--primary-red);
     color: #ffffff;
     border-color: var(--primary-red);
-    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.4);
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
 }
 
 /* كروت ورسومات المودرن */
@@ -164,23 +149,20 @@ h2::after {
 }
 
 .card {
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background: var(--card-bg);
     padding: 25px;
     border-radius: var(--border-radius);
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f0f0f0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
     transition: var(--transition);
 }
 
 .card:hover {
     transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }
 
-/* شبكة الفيديوهات (فيديوين لكل صف) */
+/* شبكة الفيديوهات (فيديوين بجانب بعض) */
 .videos-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -230,7 +212,7 @@ h2::after {
 }
 
 .warning-card {
-    background-color: rgba(255, 245, 245, 0.9);
+    background-color: #fff5f5;
     border: 1px solid #ffe3e3;
     border-right: 6px solid var(--primary-red);
 }
@@ -244,7 +226,6 @@ table {
     border-radius: 12px;
     overflow: hidden;
     border: 1px solid #eee;
-    background: rgba(255, 255, 255, 0.9);
 }
 
 th, td {
@@ -267,14 +248,12 @@ tr:last-child td {
 }
 
 tr:nth-child(even) {
-    background-color: rgba(245, 245, 245, 0.5);
+    background-color: #fdfdfd;
 }
 
-/* الفوتر Modern مع البلور */
+/* الفوتر Modern */
 footer {
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: #000000;
     color: #ffffff;
     text-align: center;
     padding: 25px 0;
