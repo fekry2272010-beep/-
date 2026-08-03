@@ -1,16 +1,14 @@
 :root {
-    --primary-red: #dc3545;
-    --dark-red: #b02a37;
+    --primary-red: #ff2a4b;
+    --neon-glow: #ff003c;
     --dark-bg: #111111;
     --light-bg: #f4f6f9;
     --card-bg: rgba(255, 255, 255, 0.92);
     --text-main: #2b2d42;
-    --text-muted: #6c757d;
     --border-radius: 16px;
     --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-/* إعادة ضبط عامة لضمان التناسق على جميع الأجهزة */
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -28,13 +26,12 @@ body {
     background-size: cover;
     color: var(--text-main);
     line-height: 1.6;
-    overflow-x: hidden; /* منع التمرير الأفقي تماماً */
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-/* الحاوية الرئيسية للتجاوب المرن */
 .container {
     width: 100%;
     max-width: 1200px;
@@ -42,9 +39,8 @@ body {
     padding: 0 15px;
 }
 
-/* الهيدر */
 header {
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.82);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     will-change: transform;
@@ -52,14 +48,14 @@ header {
     padding: clamp(20px, 4vw, 40px) 15px;
     text-align: center;
     border-bottom: 4px solid var(--primary-red);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 header h1 {
     margin: 0;
-    font-size: clamp(1.4rem, 3.5vw, 2.5rem); /* حجم خط ديناميكي يتكيف مع الشاشة */
+    font-size: clamp(1.4rem, 3.5vw, 2.5rem);
     font-weight: 800;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    text-shadow: 0 0 10px rgba(255, 42, 75, 0.6);
 }
 
 header p {
@@ -69,42 +65,47 @@ header p {
     font-weight: 600;
 }
 
-/* شريط التنقل الرئيسي */
+/* شريط التنقل الرئيسي بتنسيق أزرار النيون */
 nav.main-nav {
-    background: rgba(0, 0, 0, 0.88);
+    background: rgba(0, 0, 0, 0.9);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     will-change: transform;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 8px;
-    padding: 10px 15px;
+    gap: 12px;
+    padding: 12px 15px;
     position: sticky;
     top: 0;
     z-index: 1000;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    flex-wrap: wrap; /* يتيح نزول الأزرار بسلاسة في الشاشات الصغيرة */
+    border-bottom: 1px solid rgba(255, 42, 75, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    flex-wrap: wrap;
 }
 
+/* 🌟 الأزرار النيونية الرئيسية */
 nav.main-nav button {
-    background: transparent;
-    border: none;
+    background: rgba(15, 15, 15, 0.8);
+    border: 2px solid var(--primary-red);
     color: #ffffff;
-    padding: 8px 18px;
-    font-size: clamp(0.8rem, 1.5vw, 1rem);
+    padding: 8px 22px;
+    font-size: clamp(0.85rem, 1.5vw, 1rem);
     font-weight: 700;
     border-radius: 30px;
     cursor: pointer;
     transition: var(--transition);
     white-space: nowrap;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 10px rgba(255, 42, 75, 0.3), inset 0 0 10px rgba(255, 42, 75, 0.2);
 }
 
 nav.main-nav button:hover, nav.main-nav button.active {
     background: var(--primary-red);
     color: #ffffff;
-    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.5);
+    box-shadow: 0 0 20px var(--neon-glow), 0 0 35px var(--neon-glow), inset 0 0 15px #ffffff;
+    border-color: #ffffff;
+    transform: translateY(-2px);
 }
 
 /* المحتوى الرئيسي */
@@ -118,7 +119,7 @@ nav.main-nav button:hover, nav.main-nav button.active {
     will-change: transform;
     padding: clamp(15px, 3vw, 30px);
     border-radius: var(--border-radius);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
@@ -139,45 +140,63 @@ h2::after {
     height: 4px;
     background: var(--primary-red);
     border-radius: 2px;
+    box-shadow: 0 0 10px var(--neon-glow);
 }
 
-/* شريط التنقل الفرعي */
+/* 🌟 شريط التنقل الفرعي بنمط النيون */
 .sub-nav {
     display: flex;
     justify-content: center;
-    gap: 10px;
-    background: rgba(255, 255, 255, 0.7);
+    gap: 12px;
+    background: rgba(15, 15, 15, 0.85);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    padding: 8px;
-    border-radius: 12px;
+    padding: 12px;
+    border-radius: 14px;
     margin: 20px 0;
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 42, 75, 0.3);
     flex-wrap: wrap;
 }
 
 .sub-nav button {
-    background: rgba(255, 255, 255, 0.9);
-    color: #000000;
-    border: 2px solid #000000;
-    padding: 8px 16px;
+    background: rgba(0, 0, 0, 0.7);
+    color: #ffffff;
+    border: 2px solid #00f0ff; /* لون نيون أزرق جذاب للتفرقة بين الصفوف */
+    padding: 9px 18px;
     font-size: clamp(0.8rem, 1.5vw, 0.95rem);
     font-weight: 700;
     border-radius: 8px;
     cursor: pointer;
     transition: var(--transition);
-    flex: 1 1 180px; /* يتناسب تلقائياً بناءً على مساحة الشاشة */
+    flex: 1 1 180px;
     text-align: center;
+    box-shadow: 0 0 8px rgba(0, 240, 255, 0.3);
 }
 
 .sub-nav button:hover, .sub-nav button.active-sub {
-    background: var(--primary-red);
-    color: #ffffff;
-    border-color: var(--primary-red);
-    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.4);
+    background: #00f0ff;
+    color: #000000;
+    border-color: #ffffff;
+    box-shadow: 0 0 20px #00f0ff, 0 0 30px #00f0ff;
+    font-weight: 800;
+    transform: translateY(-2px);
 }
 
-/* شبكات الكروت متجاوبة مع كافة الشاشات */
+/* الفيديو التقديمي في الصفحة الرئيسية */
+.intro-video-card {
+    max-width: 800px;
+    margin: 25px auto 30px auto;
+    text-align: center;
+    border-top: 4px solid var(--primary-red);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.intro-video-card h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+}
+
 .features {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -201,7 +220,6 @@ h2::after {
     background: rgba(255, 255, 255, 0.98);
 }
 
-/* شبكة الفيديوهات */
 .videos-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -227,7 +245,7 @@ h2::after {
 
 .video-container {
     position: relative;
-    padding-bottom: 56.25%; /* نسبة 16:9 أوتوماتيكية لأي شاشة */
+    padding-bottom: 56.25%;
     height: 0;
     border-radius: 12px;
     overflow: hidden;
@@ -243,9 +261,8 @@ h2::after {
     border: 0;
 }
 
-/* الجداول والجداول الملتفة للشاشات الصغير */
 .exam-info {
-    overflow-x: auto; /* يجعل الجدول قابلاً للتمرير على الهاتف فقط إذا كان كبيراً دون تخريب الشاشة */
+    overflow-x: auto;
 }
 
 table {
@@ -281,9 +298,8 @@ td {
     border-right: 6px solid var(--primary-red);
 }
 
-/* الفوتر التجاوبي */
 footer {
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.92);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     color: #ffffff;
@@ -293,54 +309,27 @@ footer {
     width: 100%;
     font-size: clamp(0.8rem, 1.5vw, 0.9rem);
     border-top: 3px solid var(--primary-red);
+    box-shadow: 0 -5px 15px rgba(255, 42, 75, 0.2);
 }
 
 footer a {
     color: #ffffff;
     text-decoration: none;
     font-weight: 600;
-    word-break: break-word; /* منع تكسير التنسيق بوجود روابط طويلة */
+    word-break: break-word;
 }
 
-/* ---------------------------------------------------- */
-/* استعلامات الوسائط الشاملة (Media Queries) */
-/* ---------------------------------------------------- */
-
-/* الشاشات الكبيرة جداً (شاشات الكمبيوتر والـ 4K) */
-@media (min-width: 1400px) {
-    .container {
-        max-width: 1320px;
-    }
-}
-
-/* أجهزة التابلت (Tablet) */
-@media (max-width: 992px) {
-    .videos-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-/* أجهزة الموبايل بمختلف أنواعها (Mobile Phones) */
 @media (max-width: 600px) {
-    nav.main-nav {
-        gap: 5px;
-    }
-
     nav.main-nav button {
-        flex: 1 1 auto;
+        flex: 1 1 100%;
         text-align: center;
-        padding: 6px 12px;
     }
 
     .sub-nav button {
-        flex: 1 1 100%; /* أزرار الصفوف تأخذ عرض الشاشة كاملاً في الهواتف الصغرى */
+        flex: 1 1 100%;
     }
 
     .videos-grid {
-        grid-template-columns: 1fr; /* فيديو واحد بكل سطر على الهاتف */
-    }
-
-    th, td {
-        padding: 8px 4px; /* تصغير حواف الجداول لتناسب الهاتف */
+        grid-template-columns: 1fr;
     }
 }
