@@ -19,7 +19,7 @@ function showSection(sectionId, buttonElement) {
     if (targetSection) {
         targetSection.style.display = 'block';
     }
-    
+
     if (buttonElement) {
         buttonElement.classList.add('active');
     }
@@ -29,8 +29,8 @@ function showSection(sectionId, buttonElement) {
 // 2. التنقل بين أزرار الفيديوهات الفرعية (الصف الأول / الصف الثاني / المواد الإضافية)
 // ==========================================
 function filterGrade(gradeId, buttonElement) {
-    // إخفاء جميع شبكات الفيديوهات
-    const videoGrids = document.querySelectorAll('.videos-grid');
+    // إخفاء جميع شبكات ومجموعات الفيديوهات الرئيسية
+    const videoGrids = document.querySelectorAll('.videos-grid:not(.track-grid), .videos-grid-container');
     videoGrids.forEach(grid => {
         grid.style.display = 'none';
     });
@@ -41,13 +41,44 @@ function filterGrade(gradeId, buttonElement) {
         btn.classList.remove('active-sub');
     });
 
-    // إظهار شبكة الفيديوهات المطلوبة وتفعيل زرها
+    // إظهار القسم المختار
     const targetGrid = document.getElementById(gradeId);
     if (targetGrid) {
-        targetGrid.style.display = 'grid';
+        if (gradeId === 'grade2-extra-videos') {
+            targetGrid.style.display = 'block'; // الحاوية الرئيسية للمسارات
+        } else {
+            targetGrid.style.display = 'grid'; // الشبكة المعتادة للصفين الأول والثاني
+        }
     }
 
     if (buttonElement) {
         buttonElement.classList.add('active-sub');
+    }
+}
+
+// ==========================================
+// 3. التنقل بين مسارات المواد الإضافية (طب / هندسة / أعمال / آداب)
+// ==========================================
+function filterTrack(trackId, buttonElement) {
+    // إخفاء كافة شبكات المسارات
+    const trackGrids = document.querySelectorAll('.track-grid');
+    trackGrids.forEach(grid => {
+        grid.style.display = 'none';
+    });
+
+    // إزالة تفعيل المسار عن الأزرار
+    const trackButtons = document.querySelectorAll('.tracks-nav button');
+    trackButtons.forEach(btn => {
+        btn.classList.remove('active-track');
+    });
+
+    // إظهار المسار المطلوب وتفعيل زره
+    const targetTrack = document.getElementById(trackId);
+    if (targetTrack) {
+        targetTrack.style.display = 'grid';
+    }
+
+    if (buttonElement) {
+        buttonElement.classList.add('active-track');
     }
 }
