@@ -1,26 +1,53 @@
-// التبديل بين أقسام الموقع الرئيسية
-function showSection(sectionId, btnElement) {
-    document.getElementById('home').style.display = 'none';
-    document.getElementById('videos').style.display = 'none';
-    document.getElementById('exams').style.display = 'none';
+// ==========================================
+// 1. التنقل بين أقسام الموقع الرئيسية (الرئيسية / الفيديوهات / الامتحانات)
+// ==========================================
+function showSection(sectionId, buttonElement) {
+    // إخفاء جميع الأقسام الرئيسية
+    const sections = document.querySelectorAll('.content > section');
+    sections.forEach(section => {
+        section.style.display = 'none';
+    });
 
-    // إعادة ضبط الأزرار النشطة في النافبار الرئيسي
-    const mainNavButtons = document.querySelectorAll('nav.main-nav button');
-    mainNavButtons.forEach(btn => btn.classList.remove('active'));
+    // إزالة تفعيل النيون عن جميع أزرار القائمة الرئيسية
+    const navButtons = document.querySelectorAll('nav.main-nav button');
+    navButtons.forEach(btn => {
+        btn.classList.remove('active');
+    });
 
-    document.getElementById(sectionId).style.display = 'block';
-    btnElement.classList.add('active');
+    // إظهار القسم المطلوب وتفعيل زره
+    const targetSection = document.getElementById(sectionId);
+    if (targetSection) {
+        targetSection.style.display = 'block';
+    }
+    
+    if (buttonElement) {
+        buttonElement.classList.add('active');
+    }
 }
 
-// التبديل بين صفوف الفيديوهات (الأول الثانوي / الثاني الثانوي)
-function filterGrade(gradeId, btnElement) {
-    document.getElementById('grade1-videos').style.display = 'none';
-    document.getElementById('grade2-videos').style.display = 'none';
+// ==========================================
+// 2. التنقل بين أزرار الفيديوهات الفرعية (الصف الأول / الصف الثاني / المواد الإضافية)
+// ==========================================
+function filterGrade(gradeId, buttonElement) {
+    // إخفاء جميع شبكات الفيديوهات
+    const videoGrids = document.querySelectorAll('.videos-grid');
+    videoGrids.forEach(grid => {
+        grid.style.display = 'none';
+    });
 
-    // إعادة ضبط الأزرار النشطة في النافبار الفرعي للفيديوهات
-    const subNavButtons = document.querySelectorAll('.sub-nav button');
-    subNavButtons.forEach(btn => btn.classList.remove('active-sub'));
+    // إزالة تفعيل النيون عن أزرار الصفوف الفرعية
+    const subButtons = document.querySelectorAll('.sub-nav button');
+    subButtons.forEach(btn => {
+        btn.classList.remove('active-sub');
+    });
 
-    document.getElementById(gradeId).style.display = 'grid';
-    btnElement.classList.add('active-sub');
+    // إظهار شبكة الفيديوهات المطلوبة وتفعيل زرها
+    const targetGrid = document.getElementById(gradeId);
+    if (targetGrid) {
+        targetGrid.style.display = 'grid';
+    }
+
+    if (buttonElement) {
+        buttonElement.classList.add('active-sub');
+    }
 }
