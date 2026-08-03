@@ -40,7 +40,7 @@
             <div class="features">
                 <div class="card" style="text-align: center;">
                     <h3>👤 مدير المدرسة</h3>
-                    <img src="https://scontent-hbe1-2.xx.fbcdn.net/v/t39.30808-6/758671263_122093431389430827_2897028690545565915_n.jpg?stp=dst-jpg_tt6&cstp=mx1068x1600&ctp=s1068x1600&_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=gSCUAjCq9IkQ7kNvwELRBzW&_nc_oc=AdpqdvPIW7FnrFizvbn67Y2bZlgl2aqcOp1ajlKkZSOXPEsm6gV45va6hs5Y9FmFXVo&_nc_zt=23&_nc_ht=scontent-hbe1-2.xx&_nc_gid=8vqg_3j5k6N0AhPeRriN1A&_nc_ss=7b2a8&oh=00_AQGrZCTFYQ25MDQbQwSbHBpCVctftkZmuaDdQdcJINfdlA&oe=6A72727A" alt="مدير المدرسة" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin: 15px auto; display: block; border: 3px solid #dc3545; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" loading="lazy">
+                    <img src="images/manager.jpg" alt="مدير المدرسة الأستاذ محمد عبدالعزيز نصار" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin: 15px auto; display: block; border: 3px solid #dc3545; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" loading="lazy">
                     <p style="font-weight: bold; margin-top: 10px; font-size: 1.1rem; color: #000;">الأستاذ / محمد عبدالعزيز نصار</p>
                 </div>
 
@@ -137,23 +137,89 @@
                 </div>
             </div>
 
-            <!-- المواد الإضافية الخاصة بالصف الثاني -->
-            <div id="grade2-extra-videos" class="videos-grid" style="display: none;">
-                <div class="card video-card">
-                    <h3>شرح مادة البرمجة والحاسب</h3>
-                    <p>الصف الثاني الثانوي - مواد إضافية</p>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="YouTube video player" allowfullscreen loading="lazy"></iframe>
+            <!-- المواد الإضافية الخاصة بالصف الثاني (مع شريط تنقل المسارات) -->
+            <div id="grade2-extra-videos" class="videos-grid-container" style="display: none;">
+                
+                <!-- 🌟 شريط تنقل المسارات الإضافية -->
+                <div class="tracks-nav">
+                    <button class="active-track" onclick="filterTrack('track-med', this)">🧬 مسار الطب وعلوم الحياة</button>
+                    <button onclick="filterTrack('track-eng', this)">💻 مسار الهندسة وعلوم الحاسب</button>
+                    <button onclick="filterTrack('track-biz', this)">💼 مسار الأعمال</button>
+                    <button onclick="filterTrack('track-arts', this)">🎨 مسار الآداب والفنون</button>
+                </div>
+
+                <!-- 1. مسار الطب وعلوم الحياة -->
+                <div id="track-med" class="videos-grid track-grid">
+                    <div class="card video-card">
+                        <h3>شرح مادة الرياضيات</h3>
+                        <p>مسار الطب وعلوم الحياة - الصف الثاني</p>
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="شرح الرياضيات" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                    </div>
+                    <div class="card video-card">
+                        <h3>شرح مادة الفيزياء</h3>
+                        <p>مسار الطب وعلوم الحياة - الصف الثاني</p>
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="شرح الفيزياء" allowfullscreen loading="lazy"></iframe>
+                        </div>
                     </div>
                 </div>
 
-                <div class="card video-card">
-                    <h3>مادة التربية الدينية / الوطنية</h3>
-                    <p>الصف الثاني الثانوي - مواد إضافية</p>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="YouTube video player" allowfullscreen loading="lazy"></iframe>
+                <!-- 2. مسار الهندسة وعلوم الحاسب -->
+                <div id="track-eng" class="videos-grid track-grid" style="display: none;">
+                    <div class="card video-card">
+                        <h3>شرح مادة الكيمياء</h3>
+                        <p>مسار الهندسة وعلوم الحاسب - الصف الثاني</p>
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="شرح الكيمياء" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                    </div>
+                    <div class="card video-card">
+                        <h3>شرح مادة البرمجة وعلوم الحاسب</h3>
+                        <p>مسار الهندسة وعلوم الحاسب - الصف الثاني</p>
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="شرح البرمجة" allowfullscreen loading="lazy"></iframe>
+                        </div>
                     </div>
                 </div>
+
+                <!-- 3. مسار الأعمال -->
+                <div id="track-biz" class="videos-grid track-grid" style="display: none;">
+                    <div class="card video-card">
+                        <h3>شرح مادة المحاسبة</h3>
+                        <p>مسار الأعمال - الصف الثاني</p>
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="شرح المحاسبة" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                    </div>
+                    <div class="card video-card">
+                        <h3>شرح مادة إدارة الأعمال</h3>
+                        <p>مسار الأعمال - الصف الثاني</p>
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="شرح إدارة الأعمال" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. مسار الآداب والفنون -->
+                <div id="track-arts" class="videos-grid track-grid" style="display: none;">
+                    <div class="card video-card">
+                        <h3>شرح مادة علم النفس</h3>
+                        <p>مسار الآداب والفنون - الصف الثاني</p>
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="شرح علم النفس" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                    </div>
+                    <div class="card video-card">
+                        <h3>شرح مادة اللغة الأجنبية الثانية</h3>
+                        <p>مسار الآداب والفنون - الصف الثاني</p>
+                        <div class="video-container">
+                            <iframe src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="شرح اللغة الأجنبية الثانية" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
@@ -177,12 +243,12 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>الأحد 2027-1-10</td>
+                            <td>الأحد 2027-01-10</td>
                             <td>اللغة العربية</td>
                             <td>من 9:00 إلى 12:00</td>
                         </tr>
                         <tr>
-                            <td>الثلاثاء 2027-1-11</td>
+                            <td>الإثنين 2027-01-11</td>
                             <td>الرياضيات</td>
                             <td>من 9:00 إلى 11:30</td>
                         </tr>
