@@ -3,203 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مدرسة الشهيد اسحق زكريا الرقمية</title>
+    <title>منصة التعليم الإلكتروني</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <!-- الشريط العلوي والتنقل الرئيسي -->
     <header>
-        <div class="container">
-            <h1>مدرسة الشهيد اسحق زكريا</h1>
-            <p>منصتك التعليمية الرقمية للمستقبل</p>
-        </div>
+        <div class="logo">منصة التعليم</div>
+        <nav class="main-nav">
+            <button class="active" onclick="showSection('home-section', this)">الرئيسية</button>
+            <button onclick="showSection('videos-section', this)">الفيديوهات</button>
+            <button onclick="showSection('exams-section', this)">الامتحانات</button>
+        </nav>
     </header>
 
-    <!-- قائمة التنقل الرئيسية -->
-    <nav class="main-nav">
-        <button class="active" onclick="showSection('home', this)">الرئيسية</button>
-        <button onclick="showSection('videos', this)">فيديوهات الشرح</button>
-        <button onclick="showSection('exams', this)">معلومات الامتحانات</button>
-    </nav>
+    <main class="content">
 
-    <div class="container content">
-        
-        <!-- قسم الرئيسية -->
-        <section id="home">
-            <h2>مرحباً بكم في منصتنا التعليمية</h2>
-            <p style="font-size: 1.05rem; color: #333; font-weight: 500;">تهدف هذه المنصة إلى تسهيل العملية التعليمية لطلاب مدرسة الشهيد اسحاق زكريا، حيث يمكنك متابعة دروسك ومعرفة آخر مستجدات الجداول والامتحانات من مكان واحد.</p>
-            
-            <!-- 🎬 فيديو تقديمي للمدرسة -->
-            <div class="card intro-video-card">
-                <h3>🎥 فيديو تقديمي عن مدرسة الشهيد اسحق زكريا</h3>
-                <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="فيديو تقديمي للمدرسة" allowfullscreen loading="lazy"></iframe>
-                </div>
-            </div>
-
-            <div class="features">
-                <div class="card" style="text-align: center;">
-                    <h3>👤 مدير المدرسة</h3>
-                    <img src="https://scontent-hbe1-2.xx.fbcdn.net/v/t39.30808-6/758671263_122093431389430827_2897028690545565915_n.jpg?stp=dst-jpg_tt6&cstp=mx1068x1600&ctp=s1068x1600&_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=gSCUAjCq9IkQ7kNvwELRBzW&_nc_oc=AdpqdvPIW7FnrFizvbn67Y2bZlgl2aqcOp1ajlKkZSOXPEsm6gV45va6hs5Y9FmFXVo&_nc_zt=23&_nc_ht=scontent-hbe1-2.xx&_nc_gid=8vqg_3j5k6N0AhPeRriN1A&_nc_ss=7b2a8&oh=00_AQGrZCTFYQ25MDQbQwSbHBpCVctftkZmuaDdQdcJINfdlA&oe=6A72727A" alt="مدير المدرسة" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin: 15px auto; display: block; border: 3px solid #dc3545; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" loading="lazy">
-                    <p style="font-weight: bold; margin-top: 10px; font-size: 1.1rem; color: #000;">الأستاذ / محمد عبدالعزيز نصار</p>
-                </div>
-
-                <div class="card">
-                    <h3>🎬 فيديوهات متجددة</h3>
-                    <p>شروحات وافية لجميع المواد الدراسية بأقلام نخبة من معلمينا الكرام.</p>
-                </div>
-                
-                <div class="card">
-                    <h3>📢 أحدث الأخبار</h3>
-                    <p>تابع جداول الامتحانات والتعليمات الرسمية الصادرة من الإدارة أولاً بأول.</p>
-                </div>
-            </div>
-
-            <!-- كارت الموقع الجغرافي -->
-            <div class="card" style="text-align: center; width: 100%; max-width: 1000px; margin: 30px auto 0 auto;">
-                <h3>📍 موقع المدرسة الجغرافي</h3>
-                <p style="margin-bottom: 15px; font-weight: 600; font-size: 1.1rem;">جمهورية مصر العربية - البريجات مركز كوم حمادة البحيرة</p>
-                <div style="overflow: hidden; border-radius: 12px;">
-                    <iframe 
-                        src="https://maps.google.com/maps?q=30.498603546846947,30.82446950533928&z=17&output=embed" 
-                        width="100%" 
-                        height="400" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy">
-                    </iframe>
-                </div>
+        <!-- 1. قسم الرئيسية -->
+        <section id="home-section">
+            <div class="hero-card">
+                <h1>مرحباً بك في المنصة التعليمية</h1>
+                <p>اختر من القائمة العلوية للانتقال إلى شرح الدروس بالفيديو أو تقديم الامتحانات التفاعلية.</p>
             </div>
         </section>
 
-        <!-- قسم الفيديوهات -->
-        <section id="videos" style="display:none;">
-            <h2>فيديوهات الشرح الدراسية</h2>
-
-            <!-- شريط تنقل فرعي محدد ومفصل للصفوف -->
+        <!-- 2. قسم الفيديوهات -->
+        <section id="videos-section" style="display: none;">
+            
+            <!-- قائمة التنقل الفرعية للصفوف -->
             <div class="sub-nav">
                 <button class="active-sub" onclick="filterGrade('grade1-videos', this)">الصف الأول الثانوي</button>
                 <button onclick="filterGrade('grade2-videos', this)">الصف الثاني الثانوي</button>
-                <button onclick="filterGrade('grade2-extra-videos', this)">المواد الإضافية الخاصة بالصف الثاني</button>
+                <button onclick="filterGrade('grade2-extra-videos', this)">المواد الإضافية (الصف الثاني)</button>
             </div>
 
-            <!-- فيديوهات الصف الأول الثانوي -->
+            <!-- شبكة فيديوهات الصف الأول -->
             <div id="grade1-videos" class="videos-grid">
                 <div class="card video-card">
-                    <h3>شرح درس اللغة العربية</h3>
-                    <p>الصف الأول الثانوي - أ/ محمد أحمد</p>
+                    <h3>الصف الأول - الدرس الأول</h3>
+                    <p>مقدمة عامة في البرمجة وتكنولوجيا المعلومات</p>
                     <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="YouTube video player" allowfullscreen loading="lazy"></iframe>
-                    </div>
-                </div>
-
-                <div class="card video-card">
-                    <h3>شرح الكيمياء العامة</h3>
-                    <p>الصف الأول الثانوي - أ/ حسن علي</p>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="YouTube video player" allowfullscreen loading="lazy"></iframe>
-                    </div>
-                </div>
-
-                <div class="card video-card">
-                    <h3>درس التاريخ الحديث</h3>
-                    <p>الصف الأول الثانوي - أ/ سامح فؤاد</p>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="YouTube video player" allowfullscreen loading="lazy"></iframe>
+                        <iframe src="https://www.youtube.com/embed/56lkofpjOAs" title="درس الصف الأول" allowfullscreen loading="lazy"></iframe>
                     </div>
                 </div>
             </div>
 
-            <!-- فيديوهات الصف الثاني الثانوي -->
+            <!-- شبكة فيديوهات الصف الثاني -->
             <div id="grade2-videos" class="videos-grid" style="display: none;">
                 <div class="card video-card">
-                    <h3>شرح وحدة الرياضيات الأولى</h3>
-                    <p>الصف الثاني الثانوي - أ/ محمود علي</p>
+                    <h3>الصف الثاني - الدرس الأول</h3>
+                    <p>مفاهيم وتقنيات البرمجة المتقدمة</p>
                     <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="YouTube video player" allowfullscreen loading="lazy"></iframe>
-                    </div>
-                </div>
-
-                <div class="card video-card">
-                    <h3>مراجعة الأحياء - الفصل الأول</h3>
-                    <p>الصف الثاني الثانوي - أ/ مصطفى سعيد</p>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="YouTube video player" allowfullscreen loading="lazy"></iframe>
-                    </div>
-                </div>
-
-                <div class="card video-card">
-                    <h3>مبادئ الجغرافيا الطبيعية</h3>
-                    <p>الصف الثاني الثانوي - أ/ ياسر حسين</p>
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="YouTube video player" allowfullscreen loading="lazy"></iframe>
+                        <iframe src="https://www.youtube.com/embed/56lkofpjOAs" title="درس الصف الثاني" allowfullscreen loading="lazy"></iframe>
                     </div>
                 </div>
             </div>
 
-            <!-- المواد الإضافية الخاصة بالصف الثاني -->
+            <!-- المواد الإضافية الخاصة بالصف الثاني (المسارات الأربعة - فيديوهين لكل مسار) -->
             <div id="grade2-extra-videos" class="videos-grid" style="display: none;">
-                <div class="card video-card">
-                    <h3>شرح مادة البرمجة والحاسب</h3>
-                    <p>الصف الثاني الثانوي - مواد إضافية</p>
+
+                <!-- 🩺 مسار الطب وعلوم الحياة -->
+                <div class="card video-card" style="border-top-color: #00f0ff;">
+                    <h3>🩺 مسار الطب: رياضيات</h3>
+                    <p>شرح مادة الرياضيات للمسار الطبي</p>
                     <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="YouTube video player" allowfullscreen loading="lazy"></iframe>
+                        <iframe src="https://www.youtube.com/embed/56lkofpjOAs" title="رياضيات - مسار الطب" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+                <div class="card video-card" style="border-top-color: #00f0ff;">
+                    <h3>🩺 مسار الطب: فيزياء</h3>
+                    <p>شرح مادة الفيزياء للمسار الطبي</p>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/56lkofpjOAs" title="فيزياء - مسار الطب" allowfullscreen loading="lazy"></iframe>
                     </div>
                 </div>
 
-                <div class="card video-card">
-                    <h3>مادة التربية الدينية / الوطنية</h3>
-                    <p>الصف الثاني الثانوي - مواد إضافية</p>
+                <!-- 💻 مسار الهندسة وعلوم الحاسب -->
+                <div class="card video-card" style="border-top-color: #00ff88;">
+                    <h3>💻 مسار الهندسة: كيمياء</h3>
+                    <p>شرح مادة الكيمياء للمسار الهندسي</p>
                     <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/56lkofpjOAs?si=_qJWPB5LDD6KKEdL" title="YouTube video player" allowfullscreen loading="lazy"></iframe>
+                        <iframe src="https://www.youtube.com/embed/56lkofpjOAs" title="كيمياء - مسار الهندسة" allowfullscreen loading="lazy"></iframe>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- قسم الامتحانات -->
-        <section id="exams" style="display:none;">
-            <h2>جداول ومعلومات الامتحانات</h2>
-            <div class="exam-info">
-                <div class="card warning-card">
-                    <h3 style="margin-top: 0; color: #dc3545;">⚠️ تنبيه هام بشأن امتحانات الفصل الدراسي</h3>
-                    <p style="margin-bottom: 0;">يرجى العلم أن الامتحانات تبدأ في تمام الساعة التاسعة صباحاً، ولن يُسمح بدخول الطلاب بعد مرور 15 دقيقة من بدء اللجنة.</p>
+                <div class="card video-card" style="border-top-color: #00ff88;">
+                    <h3>💻 مسار الهندسة: برمجة</h3>
+                    <p>شرح مادة البرمجة للمسار الهندسي</p>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/56lkofpjOAs" title="برمجة - مسار الهندسة" allowfullscreen loading="lazy"></iframe>
+                    </div>
                 </div>
-                
-                <h3 style="margin-top: 30px;">جدول امتحانات الصف الأول الثانوي</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>اليوم والتاريخ</th>
-                            <th>المادة</th>
-                            <th>الزمن</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>الأحد 2027-1-10</td>
-                            <td>اللغة العربية</td>
-                            <td>من 9:00 إلى 12:00</td>
-                        </tr>
-                        <tr>
-                            <td>الثلاثاء 2027-1-11</td>
-                            <td>الرياضيات</td>
-                            <td>من 9:00 إلى 11:30</td>
-                        </tr>
-                    </tbody>
-                </table>
+
+                <!-- 📊 مسار الأعمال -->
+                <div class="card video-card" style="border-top-color: #ffcc00;">
+                    <h3>📊 مسار الأعمال: محاسبة</h3>
+                    <p>شرح مادة المحاسبة لمسار الأعمال</p>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/56lkofpjOAs" title="محاسبة - مسار الأعمال" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+                <div class="card video-card" style="border-top-color: #ffcc00;">
+                    <h3>📊 مسار الأعمال: إدارة أعمال</h3>
+                    <p>شرح مادة إدارة الأعمال لمسار الأعمال</p>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/56lkofpjOAs" title="إدارة أعمال - مسار الأعمال" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+
+                <!-- 🎨 مسار الآداب والفنون -->
+                <div class="card video-card" style="border-top-color: #ff007f;">
+                    <h3>🎨 مسار الآداب: علم نفس</h3>
+                    <p>شرح مادة علم النفس لمسار الآداب والفنون</p>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/56lkofpjOAs" title="علم نفس - مسار الآداب" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+                <div class="card video-card" style="border-top-color: #ff007f;">
+                    <h3>🎨 مسار الآداب: لغة أجنبية ثانية</h3>
+                    <p>شرح مادة اللغة الأجنبية الثانية لمسار الآداب</p>
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/56lkofpjOAs" title="لغة أجنبية - مسار الآداب" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- 3. قسم الامتحانات -->
+        <section id="exams-section" style="display: none;">
+            <div class="card">
+                <h2>الامتحانات التفاعلية</h2>
+                <p>قريباً سيتم إدراج الاختبارات والأسئلة التقييمية لكل مسار وصف دراسي.</p>
             </div>
         </section>
 
-    </div>
-
-    <footer>
-        <p>جميع الحقوق محفوظة © مدرسة الشهيد اسحق زكريا 2026</p>
-        <a href="mailto:elshahid.isaac.zakaria.school@gmail.com">elshahid.isaac.zakaria.school@gmail.com</a> | 
-        <a href="tel:0453731179">0453731179</a>
-    </footer>
+    </main>
 
     <script src="script.js"></script>
-    <script src="//code.tidio.co/fsokw5kv8ntzvahlxydlzu9uz4orvh2u.js" async></script>
 </body>
 </html>
