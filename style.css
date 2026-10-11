@@ -43,12 +43,12 @@ header {
     background: rgba(0, 0, 0, 0.82);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    will-change: transform;
     color: #ffffff;
-    padding: clamp(20px, 4vw, 40px) 15px;
+    padding: clamp(20px, 4vw, 35px) 15px;
     text-align: center;
     border-bottom: 4px solid var(--primary-red);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    position: relative;
 }
 
 header h1 {
@@ -65,59 +65,36 @@ header p {
     font-weight: 600;
 }
 
-/* --- 🌙 دعم الوضع الليلي (Dark Mode) الدقيق --- */
-body.dark-mode {
-    background: #0a0a0a url('images/bg.jpg') no-repeat center center fixed;
-    background-size: cover;
-    color: #e0e0e0;
-}
-
-body.dark-mode .content,
-body.dark-mode .card,
-body.dark-mode table,
-body.dark-mode .pdf-card {
-    background: rgba(20, 20, 20, 0.95) !important;
-    color: #f1f1f1 !important;
-    border-color: rgba(255, 255, 255, 0.15);
-}
-
-body.dark-mode h2 {
-    color: #ffffff !important;
-}
-
-body.dark-mode .card p, 
-body.dark-mode td {
-    color: #ccc !important;
-}
-
-/* زر التبديل للوضع الليلي في الهيدر */
+/* --- 🌙 زر الوضع الليلي في أعلى الجانب --- */
 .theme-toggle-btn {
-    background: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.85);
     border: 2px solid #ffbb00;
     color: #ffffff;
     padding: 8px 16px;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 700;
     border-radius: 30px;
     cursor: pointer;
     transition: var(--transition);
-    box-shadow: 0 0 10px rgba(255, 187, 0, 0.3);
-    margin-top: 15px;
+    box-shadow: 0 0 12px rgba(255, 187, 0, 0.3);
+    z-index: 100;
 }
 
 .theme-toggle-btn:hover {
     background: #ffbb00;
     color: #000000;
-    box-shadow: 0 0 20px #ffbb00, 0 0 30px #ffbb00;
+    box-shadow: 0 0 20px #ffbb00;
     transform: translateY(-2px);
 }
 
-/* شريط التنقل الرئيسي بتنسيق أزرار النيون */
+/* --- 📌 شريط التنقل الرئيسي الأفقي (في مكانه الأصلي أعلى الصفحة) --- */
 nav.main-nav {
-    background: rgba(0, 0, 0, 0.9);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    will-change: transform;
+    background: rgba(0, 0, 0, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -154,6 +131,20 @@ nav.main-nav button:hover, nav.main-nav button.active {
     transform: translateY(-2px);
 }
 
+/* زر البحث السريع في الشريط الرئيسي */
+.nav-search-btn {
+    background: rgba(0, 240, 255, 0.1) !important;
+    border-color: #00f0ff !important;
+    color: #00f0ff !important;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.3) !important;
+}
+
+.nav-search-btn:hover {
+    background: #00f0ff !important;
+    color: #000000 !important;
+    box-shadow: 0 0 20px #00f0ff !important;
+}
+
 /* المحتوى الرئيسي */
 .content {
     flex: 1;
@@ -162,7 +153,6 @@ nav.main-nav button:hover, nav.main-nav button.active {
     background: var(--card-bg);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    will-change: transform;
     padding: clamp(15px, 3vw, 30px);
     border-radius: var(--border-radius);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
@@ -170,7 +160,7 @@ nav.main-nav button:hover, nav.main-nav button.active {
     overflow: hidden;
 }
 
-/* --- 📱 انميشن انتقال الأقسام مثل الآيفون (ناعم جداً وأبطأ قليلاً لراحة العين) --- */
+/* --- 📱 انميشن انتقال الأقسام بأسلوب الآيفون السلس جداً --- */
 @keyframes iphoneSlideSmooth {
     0% {
         opacity: 0;
@@ -206,14 +196,74 @@ h2::after {
     box-shadow: 0 0 10px var(--neon-glow);
 }
 
-/* شريط التنقل الفرعي بنمط النيون الأزرق */
-.sub-nav {
+/* شريط البحث */
+.search-container {
+    margin: 15px 0 25px 0;
+    text-align: center;
+}
+
+.search-input {
+    width: 100%;
+    max-width: 550px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-family: inherit;
+    border: 2px solid var(--primary-red);
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--text-main);
+    outline: none;
+    transition: var(--transition);
+    box-shadow: 0 0 12px rgba(255, 42, 75, 0.2);
+    text-align: right;
+}
+
+.search-input:focus {
+    box-shadow: 0 0 22px var(--neon-glow);
+    border-color: #ffffff;
+}
+
+/* --- 🌙 الوضع الليلي الدقيق بدون تغيير الألوان الأصلية للموقع --- */
+body.dark-mode {
+    background: #0a0a0a url('images/bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #e0e0e0;
+}
+
+body.dark-mode .content,
+body.dark-mode .card,
+body.dark-mode table,
+body.dark-mode .pdf-card,
+body.dark-mode .manager-showcase-card {
+    background: rgba(20, 20, 20, 0.95) !important;
+    color: #f1f1f1 !important;
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+body.dark-mode h2,
+body.dark-mode .manager-showcase-card h3,
+body.dark-mode .manager-showcase-card p.manager-name {
+    color: #ffffff !important;
+}
+
+body.dark-mode .card p, 
+body.dark-mode td {
+    color: #ccc !important;
+}
+
+body.dark-mode .search-input {
+    background: rgba(30, 30, 30, 0.9) !important;
+    color: #ffffff !important;
+    border-color: #ff4d5e;
+}
+
+/* الأزرار الفرعية والمسارات */
+.sub-nav, .tracks-nav {
     display: flex;
     justify-content: center;
     gap: 12px;
     background: rgba(15, 15, 15, 0.85);
     backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
     padding: 12px;
     border-radius: 14px;
     margin: 20px 0;
@@ -221,7 +271,7 @@ h2::after {
     flex-wrap: wrap;
 }
 
-.sub-nav button {
+.sub-nav button, .tracks-nav button {
     background: rgba(0, 0, 0, 0.7);
     color: #ffffff;
     border: 2px solid #00f0ff;
@@ -241,88 +291,62 @@ h2::after {
     color: #000000;
     border-color: #ffffff;
     box-shadow: 0 0 20px #00f0ff, 0 0 30px #00f0ff;
-    font-weight: 800;
-    transform: translateY(-2px);
-}
-
-/* شريط التنقل الخاص بالمسارات الإضافية */
-.tracks-nav {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    background: rgba(10, 10, 10, 0.9);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    padding: 10px;
-    border-radius: 12px;
-    margin: 15px 0 25px 0;
-    border: 1px solid rgba(186, 85, 211, 0.4);
-    flex-wrap: wrap;
 }
 
 .tracks-nav button {
-    background: rgba(20, 20, 20, 0.8);
-    color: #ffffff;
-    border: 2px solid #ba55d3;
-    padding: 8px 16px;
-    font-size: clamp(0.8rem, 1.3vw, 0.9rem);
-    font-weight: 700;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: var(--transition);
-    flex: 1 1 180px;
-    text-align: center;
+    border-color: #ba55d3;
     box-shadow: 0 0 8px rgba(186, 85, 211, 0.3);
 }
 
 .tracks-nav button:hover, .tracks-nav button.active-track {
     background: #ba55d3;
     color: #ffffff;
-    border-color: #ffffff;
-    box-shadow: 0 0 15px #ba55d3, 0 0 25px #ba55d3;
-    font-weight: 800;
-    transform: translateY(-2px);
+    box-shadow: 0 0 20px #ba55d3;
 }
 
-/* شريط البحث السريع */
-.search-container {
-    margin-bottom: 25px;
-    text-align: center;
-}
-
-.search-input {
-    width: 100%;
-    max-width: 500px;
-    padding: 12px 20px;
-    font-size: 1rem;
-    font-family: inherit;
-    border: 2px solid var(--primary-red);
-    border-radius: 30px;
-    background: rgba(255, 255, 255, 0.9);
-    color: var(--text-main);
-    outline: none;
-    transition: var(--transition);
-    box-shadow: 0 0 10px rgba(255, 42, 75, 0.2);
-    text-align: right;
-}
-
-body.dark-mode .search-input {
-    background: rgba(30, 30, 30, 0.9) !important;
-    color: #ffffff !important;
-    border-color: #ff4d5e;
-}
-
-.search-input:focus {
-    box-shadow: 0 0 20px var(--neon-glow), 0 0 30px var(--neon-glow);
-    border-color: #ffffff;
-}
-
+/* الفيديو التقديمي */
 .intro-video-card {
     max-width: 800px;
     margin: 25px auto 30px auto;
     text-align: center;
     border-top: 4px solid var(--primary-red);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* --- 👤 كارت مدير المدرسة في المنتصف (تصميم فخم وأنيق) --- */
+.manager-showcase-card {
+    max-width: 480px;
+    margin: 35px auto;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.95);
+    border-top: 4px solid var(--primary-red);
+    border-radius: var(--border-radius);
+    padding: 25px 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    transition: var(--transition);
+}
+
+.manager-showcase-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(255, 42, 75, 0.25);
+}
+
+.manager-showcase-card img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 12px auto 15px auto;
+    display: block;
+    border: 4px solid var(--primary-red);
+    box-shadow: 0 0 20px rgba(255, 42, 75, 0.4);
+}
+
+.manager-showcase-card .manager-name {
+    font-weight: 800;
+    margin: 8px 0 4px 0;
+    font-size: 1.2rem;
+    color: #000000;
 }
 
 .features {
@@ -335,7 +359,6 @@ body.dark-mode .search-input {
 .card {
     background: rgba(255, 255, 255, 0.88);
     backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
     padding: 20px;
     border-radius: var(--border-radius);
     border: 1px solid rgba(255, 255, 255, 0.6);
@@ -348,7 +371,7 @@ body.dark-mode .search-input {
     background: rgba(255, 255, 255, 0.98);
 }
 
-/* كارتات الملازم والـ PDF */
+/* الملازم والـ PDF */
 .pdf-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -363,23 +386,6 @@ body.dark-mode .search-input {
     padding: 20px;
     text-align: center;
     transition: var(--transition);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-}
-
-.pdf-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(0, 240, 255, 0.2);
-}
-
-.pdf-card h3 {
-    margin: 0 0 10px 0;
-    font-size: 1.1rem;
-}
-
-.pdf-card p {
-    color: #555;
-    font-size: 0.9rem;
-    margin-bottom: 15px;
 }
 
 .download-btn {
@@ -391,7 +397,6 @@ body.dark-mode .search-input {
     font-size: 0.9rem;
     font-weight: 700;
     border-radius: 30px;
-    cursor: pointer;
     text-decoration: none;
     transition: var(--transition);
     box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
@@ -400,9 +405,7 @@ body.dark-mode .search-input {
 .download-btn:hover {
     background: #00f0ff;
     color: #000000;
-    box-shadow: 0 0 20px #00f0ff, 0 0 30px #00f0ff;
-    border-color: #ffffff;
-    transform: translateY(-2px);
+    box-shadow: 0 0 20px #00f0ff;
 }
 
 .videos-grid {
@@ -414,18 +417,6 @@ body.dark-mode .search-input {
 .video-card {
     border-top: 4px solid var(--primary-red);
     border-radius: var(--border-radius);
-}
-
-.video-card h3 {
-    margin: 0 0 8px 0;
-    font-size: 1.1rem;
-}
-
-.video-card p {
-    color: var(--primary-red);
-    font-weight: 600;
-    font-size: 0.88rem;
-    margin-bottom: 12px;
 }
 
 .video-container {
@@ -446,10 +437,6 @@ body.dark-mode .search-input {
     border: 0;
 }
 
-.exam-info {
-    overflow-x: auto;
-}
-
 table {
     width: 100%;
     border-collapse: separate;
@@ -459,7 +446,6 @@ table {
     overflow: hidden;
     border: 1px solid #eee;
     background: rgba(255, 255, 255, 0.9);
-    font-size: clamp(0.8rem, 1.5vw, 0.95rem);
 }
 
 th, td {
@@ -485,23 +471,18 @@ td {
 
 footer {
     background: rgba(0, 0, 0, 0.92);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
     color: #ffffff;
     text-align: center;
     padding: 20px 15px;
     margin-top: auto;
     width: 100%;
-    font-size: clamp(0.8rem, 1.5vw, 0.9rem);
     border-top: 3px solid var(--primary-red);
-    box-shadow: 0 -5px 15px rgba(255, 42, 75, 0.2);
 }
 
 footer a {
     color: #ffffff;
     text-decoration: none;
     font-weight: 600;
-    word-break: break-word;
 }
 
 @media (max-width: 600px) {
@@ -514,7 +495,9 @@ footer a {
         flex: 1 1 100%;
     }
 
-    .videos-grid {
-        grid-template-columns: 1fr;
+    .theme-toggle-btn {
+        position: static;
+        margin: 10px auto 0 auto;
+        display: block;
     }
 }
