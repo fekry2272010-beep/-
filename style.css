@@ -65,14 +65,13 @@ header p {
     font-weight: 600;
 }
 
-/* --- 🔵 زر التبديل المودرن (طراز الصورة المرفقة بالضبط) --- */
+/* --- 🔵 زر التبديل للوضع الليلي (في أعلى الجانب خالص) --- */
 .switch-container {
     position: absolute;
     top: 20px;
     left: 20px;
     display: flex;
     align-items: center;
-    gap: 8px;
     z-index: 100;
 }
 
@@ -123,6 +122,33 @@ input:checked + .slider:before {
     background-color: #ffffff;
 }
 
+/* --- 🔍 شريط البحث في الهيدر (تحت منصتك التعليمية) --- */
+.header-search-wrapper {
+    margin: 15px auto 0 auto;
+    max-width: 550px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-family: inherit;
+    border: 2px solid var(--primary-red);
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--text-main);
+    outline: none;
+    transition: var(--transition);
+    box-shadow: 0 0 12px rgba(255, 42, 75, 0.2);
+    text-align: right;
+    cursor: pointer;
+}
+
+.search-input:focus {
+    box-shadow: 0 0 22px var(--neon-glow);
+    border-color: #ffffff;
+}
+
 /* --- 📌 شريط التنقل الرئيسي الأفقي --- */
 nav.main-nav {
     background: rgba(0, 0, 0, 0.92);
@@ -164,13 +190,6 @@ nav.main-nav button:hover, nav.main-nav button.active {
     transform: translateY(-2px);
 }
 
-/* زر فتح صفحة البحث الجانبية */
-.open-search-trigger {
-    background: rgba(0, 240, 255, 0.1) !important;
-    border-color: #00f0ff !important;
-    color: #00f0ff !important;
-}
-
 /* المحتوى الرئيسي */
 .content {
     flex: 1;
@@ -201,7 +220,27 @@ nav.main-nav button:hover, nav.main-nav button.active {
     animation: iphoneSlideSmooth 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* --- 🔍 صفحة البحث الشاملة (Full Overlay Search Page مثل جهات الاتصال) --- */
+h2 {
+    color: #000000;
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    margin-top: 0;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 50px;
+    height: 4px;
+    background: var(--primary-red);
+    border-radius: 2px;
+    box-shadow: 0 0 10px var(--neon-glow);
+}
+
+/* --- 🔍 صفحة واجهة البحث (Search Overlay Page) --- */
 .search-page-overlay {
     position: fixed;
     top: 0;
