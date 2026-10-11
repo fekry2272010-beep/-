@@ -114,7 +114,7 @@ function clearSearchInput() {
 }
 
 // ==========================================
-// 6. دالة البحث اللحظي بالحرف (مثل تطبيق جهات الاتصال بالضبط)
+// 6. دالة البحث اللحظي الفوري
 // ==========================================
 function liveSearchProcess() {
     let input = document.getElementById('overlaySearchInput').value.toLowerCase().trim();
@@ -126,7 +126,6 @@ function liveSearchProcess() {
         return;
     }
 
-    // تجميع كافة المواد، الفيديوهات، والملازم من الصفحة
     let itemsToSearch = document.querySelectorAll('.video-card, .pdf-card, .manager-showcase-card, tbody tr');
     let matchCount = 0;
 
@@ -140,7 +139,6 @@ function liveSearchProcess() {
             resultCard.className = 'search-result-item';
             resultCard.innerHTML = `<h4>${title}</h4><p>${subtitle}</p>`;
             
-            // عند الضغط على العنصر المطابق يتم إغلاق صفحة البحث
             resultCard.onclick = () => {
                 closeSearchPage();
                 item.scrollIntoView({ behavior: 'smooth', block: 'center' });
