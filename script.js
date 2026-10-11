@@ -94,28 +94,30 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 // ==========================================
-// 5. دالة البحث الشامل في جميع محتويات الموقع (Global Search)
+// 5. دالة البحث الشامل الفعالة لجميع محتويات الموقع
 // ==========================================
 function globalSearch() {
     let input = document.getElementById('globalSearchInput').value.toLowerCase().trim();
     
-    if (input === "") {
-        // لو حقل البحث فارغ، نعيد عرض الكارتات والعناصر لحالتها الطبيعية
-        document.querySelectorAll('.video-card, .pdf-card, .features .card, tr').forEach(el => {
-            el.style.display = "";
-        });
+    if (input.length > 0) {
+        // إظهار جميع الأقسام عند بدء البحث لتشمل النتائج كل الموقع
+        const sections = document.querySelectorAll('.content > section');
+        sections.forEach(sec => sec.style.display = 'block');
+    } else {
+        // عند مسح البحث، نعود لعرض قسم الرئيسية الافتراضي
+        showSection('home', document.querySelector('nav.main-nav button'));
         return;
     }
 
-    // الانتقال التلقائي لقسم الفيديوهات أو البحث عبر الكارتات والبطاقات في الصفحة الحالية والمحتويات
-    let allSearchableItems = document.querySelectorAll('.video-card, .pdf-card, .features .card, tbody tr');
+    // البحث الفوري في الفيديوهات، الملازم، بطاقات الرئيسية، وجداول الامتحانات
+    let searchableItems = document.querySelectorAll('.video-card, .pdf-card, .features .card, tbody tr, .manager-showcase-card');
 
-    allSearchableItems.forEach(item => {
+    searchableItems.forEach(item => {
         let textContent = item.textContent.toLowerCase();
         if (textContent.includes(input)) {
-            item.style.display = ""; // إظهار العنصر المطابق
+            item.style.display = "";
         } else {
-            item.style.display = "none"; // إخفاء غير المطابق
+            item.style.display = "none";
         }
     });
 }
