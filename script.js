@@ -94,10 +94,10 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 // ==========================================
-// 5. دالة البحث السريع المحدثة (تعمل عبر كافة الأقسام)
+// 5. دالة البحث الشامل والدقيق
 // ==========================================
-function searchVideos() {
-    let input = document.getElementById('videoSearchInput').value.toLowerCase().trim();
+function globalSearch() {
+    let input = document.getElementById('globalSearchInput').value.toLowerCase().trim();
     let videoCards = document.querySelectorAll('#videos .video-card');
 
     videoCards.forEach(card => {
