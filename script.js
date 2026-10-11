@@ -75,7 +75,7 @@ function filterTrack(trackId, buttonElement) {
 }
 
 // ==========================================
-// 4. دالة الوضع الليلي (Dark Mode)
+// 4. دالة الوضع الليلي والنهاري (Dark / Light Mode)
 // ==========================================
 function toggleDarkMode() {
     document.body.classList.toggle('dark-mode');
@@ -94,10 +94,10 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 // ==========================================
-// 5. دالة البحث السريع عن الفيديوهات والمعلمين
+// 5. دالة البحث السريع المحدثة (تعمل عبر كافة الأقسام)
 // ==========================================
 function searchVideos() {
-    let input = document.getElementById('videoSearchInput').value.toLowerCase();
+    let input = document.getElementById('videoSearchInput').value.toLowerCase().trim();
     let videoCards = document.querySelectorAll('#videos .video-card');
 
     videoCards.forEach(card => {
