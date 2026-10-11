@@ -65,65 +65,62 @@ header p {
     font-weight: 600;
 }
 
-/* --- 🎛️ زر التبديل بين النهار والليل (3D Toggle Switch بنفس شكل الصورة) --- */
-.theme-switch-wrapper {
+/* --- 🔵 زر التبديل المودرن (طراز الصورة المرفقة بالضبط) --- */
+.switch-container {
     position: absolute;
     top: 20px;
     left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
     z-index: 100;
 }
 
-.theme-switch {
+.switch {
     position: relative;
-    width: 75px;
-    height: 38px;
-    background: #22252a;
-    border-radius: 30px;
-    padding: 4px;
-    cursor: pointer;
-    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.8), 0 0 12px rgba(255, 42, 75, 0.3);
-    border: 2px solid #333740;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    transition: var(--transition);
-}
-
-.theme-switch .icon {
-    font-size: 16px;
-    width: 30px;
+    display: inline-block;
+    width: 54px;
     height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    user-select: none;
-    z-index: 1;
 }
 
-.theme-switch .sun-icon {
-    color: #ffcc00;
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
 
-.theme-switch .moon-icon {
-    color: #00f0ff;
-}
-
-/* الدائرة المتحركة بالداخل */
-.theme-switch .ball {
+.slider {
     position: absolute;
-    top: 3px;
-    left: 3px;
-    width: 28px;
-    height: 28px;
-    background: #ffffff;
-    border-radius: 50%;
-    transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #d1d5db;
+    transition: .3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 34px;
 }
 
-body.dark-mode .theme-switch .ball {
-    transform: translateX(37px);
-    background: #111418;
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 4px;
+    bottom: 4px;
+    background-color: #71717a;
+    transition: .3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+input:checked + .slider {
+    background-color: #2563eb;
+}
+
+input:checked + .slider:before {
+    transform: translateX(24px);
+    background-color: #ffffff;
 }
 
 /* --- 📌 شريط التنقل الرئيسي الأفقي --- */
@@ -167,6 +164,13 @@ nav.main-nav button:hover, nav.main-nav button.active {
     transform: translateY(-2px);
 }
 
+/* زر فتح صفحة البحث الجانبية */
+.open-search-trigger {
+    background: rgba(0, 240, 255, 0.1) !important;
+    border-color: #00f0ff !important;
+    color: #00f0ff !important;
+}
+
 /* المحتوى الرئيسي */
 .content {
     flex: 1;
@@ -182,7 +186,6 @@ nav.main-nav button:hover, nav.main-nav button.active {
     overflow: hidden;
 }
 
-/* --- 📱 انميشن انتقال الأقسام بأسلوب الآيفون السلس جداً --- */
 @keyframes iphoneSlideSmooth {
     0% {
         opacity: 0;
@@ -198,54 +201,97 @@ nav.main-nav button:hover, nav.main-nav button.active {
     animation: iphoneSlideSmooth 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-h2 {
-    color: #000000;
-    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
-    margin-top: 0;
-    position: relative;
-    padding-bottom: 10px;
+/* --- 🔍 صفحة البحث الشاملة (Full Overlay Search Page مثل جهات الاتصال) --- */
+.search-page-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #121212;
+    z-index: 99999;
+    display: none;
+    flex-direction: column;
+    padding: 15px;
+    color: #ffffff;
+    animation: fadeInPage 0.25s ease-out;
 }
 
-h2::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 50px;
-    height: 4px;
-    background: var(--primary-red);
-    border-radius: 2px;
-    box-shadow: 0 0 10px var(--neon-glow);
+@keyframes fadeInPage {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* شريط البحث الشامل */
-.search-container {
-    margin: 15px 0 25px 0;
-    text-align: center;
+.search-header-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #1e1e1e;
+    padding: 8px 15px;
+    border-radius: 30px;
+    border: 1px solid #333;
 }
 
-.search-input {
-    width: 100%;
-    max-width: 550px;
-    padding: 12px 20px;
+.search-header-bar .back-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+.search-header-bar input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
     font-size: 1rem;
     font-family: inherit;
-    border: 2px solid var(--primary-red);
-    border-radius: 30px;
-    background: rgba(255, 255, 255, 0.95);
-    color: var(--text-main);
-    outline: none;
+}
+
+.search-header-bar .clear-btn {
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.search-results-container {
+    flex: 1;
+    overflow-y: auto;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.search-result-item {
+    background: #1e1e1e;
+    padding: 15px;
+    border-radius: 12px;
+    border-right: 4px solid var(--primary-red);
+    cursor: pointer;
     transition: var(--transition);
-    box-shadow: 0 0 12px rgba(255, 42, 75, 0.2);
-    text-align: right;
 }
 
-.search-input:focus {
-    box-shadow: 0 0 22px var(--neon-glow);
-    border-color: #ffffff;
+.search-result-item:hover {
+    background: #282828;
 }
 
-/* --- 🌙 الوضع الليلي الدقيق بدون تغيير الألوان الأصلية للموقع --- */
+.search-result-item h4 {
+    margin: 0 0 5px 0;
+    color: #00f0ff;
+}
+
+.search-result-item p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+/* الوضع الليلي الدقيق */
 body.dark-mode {
     background: #0a0a0a url('images/bg.jpg') no-repeat center center fixed;
     background-size: cover;
@@ -273,23 +319,14 @@ body.dark-mode td {
     color: #ccc !important;
 }
 
-body.dark-mode .search-input {
-    background: rgba(30, 30, 30, 0.9) !important;
-    color: #ffffff !important;
-    border-color: #ff4d5e;
-}
-
-/* الأزرار الفرعية والمسارات */
 .sub-nav, .tracks-nav {
     display: flex;
     justify-content: center;
     gap: 12px;
     background: rgba(15, 15, 15, 0.85);
-    backdrop-filter: blur(8px);
     padding: 12px;
     border-radius: 14px;
     margin: 20px 0;
-    border: 1px solid rgba(255, 42, 75, 0.3);
     flex-wrap: wrap;
 }
 
@@ -298,26 +335,22 @@ body.dark-mode .search-input {
     color: #ffffff;
     border: 2px solid #00f0ff;
     padding: 9px 18px;
-    font-size: clamp(0.8rem, 1.5vw, 0.95rem);
     font-weight: 700;
     border-radius: 8px;
     cursor: pointer;
     transition: var(--transition);
     flex: 1 1 180px;
     text-align: center;
-    box-shadow: 0 0 8px rgba(0, 240, 255, 0.3);
 }
 
 .sub-nav button:hover, .sub-nav button.active-sub {
     background: #00f0ff;
     color: #000000;
-    border-color: #ffffff;
-    box-shadow: 0 0 20px #00f0ff, 0 0 30px #00f0ff;
+    box-shadow: 0 0 20px #00f0ff;
 }
 
 .tracks-nav button {
     border-color: #ba55d3;
-    box-shadow: 0 0 8px rgba(186, 85, 211, 0.3);
 }
 
 .tracks-nav button:hover, .tracks-nav button.active-track {
@@ -326,16 +359,13 @@ body.dark-mode .search-input {
     box-shadow: 0 0 20px #ba55d3;
 }
 
-/* الفيديو التقديمي */
 .intro-video-card {
     max-width: 800px;
     margin: 25px auto 30px auto;
     text-align: center;
     border-top: 4px solid var(--primary-red);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* --- 👤 كارت مدير المدرسة في المنتصف --- */
 .manager-showcase-card {
     max-width: 480px;
     margin: 35px auto;
@@ -345,12 +375,6 @@ body.dark-mode .search-input {
     border-radius: var(--border-radius);
     padding: 25px 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-    transition: var(--transition);
-}
-
-.manager-showcase-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 15px 35px rgba(255, 42, 75, 0.25);
 }
 
 .manager-showcase-card img {
@@ -361,53 +385,22 @@ body.dark-mode .search-input {
     margin: 12px auto 15px auto;
     display: block;
     border: 4px solid var(--primary-red);
-    box-shadow: 0 0 20px rgba(255, 42, 75, 0.4);
 }
 
-.manager-showcase-card .manager-name {
-    font-weight: 800;
-    margin: 8px 0 4px 0;
-    font-size: 1.2rem;
-    color: #000000;
-}
-
-.features {
+.features, .pdf-grid, .videos-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 20px;
-    margin-top: 20px;
 }
 
-.card {
+.card, .pdf-card, .video-card {
     background: rgba(255, 255, 255, 0.88);
-    backdrop-filter: blur(8px);
     padding: 20px;
     border-radius: var(--border-radius);
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    transition: var(--transition);
 }
 
-.card:hover {
-    transform: translateY(-3px);
-    background: rgba(255, 255, 255, 0.98);
-}
-
-/* الملازم والـ PDF */
-.pdf-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.pdf-card {
-    background: rgba(255, 255, 255, 0.9);
-    border-top: 4px solid #00f0ff;
-    border-radius: var(--border-radius);
-    padding: 20px;
-    text-align: center;
-    transition: var(--transition);
+.video-card {
+    border-top: 4px solid var(--primary-red);
 }
 
 .download-btn {
@@ -416,29 +409,9 @@ body.dark-mode .search-input {
     color: #ffffff;
     border: 2px solid #00f0ff;
     padding: 10px 20px;
-    font-size: 0.9rem;
     font-weight: 700;
     border-radius: 30px;
     text-decoration: none;
-    transition: var(--transition);
-    box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
-}
-
-.download-btn:hover {
-    background: #00f0ff;
-    color: #000000;
-    box-shadow: 0 0 20px #00f0ff;
-}
-
-.videos-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-}
-
-.video-card {
-    border-top: 4px solid var(--primary-red);
-    border-radius: var(--border-radius);
 }
 
 .video-container {
@@ -447,7 +420,6 @@ body.dark-mode .search-input {
     height: 0;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 .video-container iframe {
@@ -466,7 +438,6 @@ table {
     margin-top: 15px;
     border-radius: 12px;
     overflow: hidden;
-    border: 1px solid #eee;
     background: rgba(255, 255, 255, 0.9);
 }
 
@@ -478,7 +449,6 @@ th, td {
 th {
     background-color: #000000;
     color: #ffffff;
-    font-weight: 700;
 }
 
 td {
@@ -487,7 +457,6 @@ td {
 
 .warning-card {
     background-color: rgba(255, 245, 245, 0.9);
-    border: 1px solid #ffe3e3;
     border-right: 6px solid var(--primary-red);
 }
 
@@ -504,23 +473,4 @@ footer {
 footer a {
     color: #ffffff;
     text-decoration: none;
-    font-weight: 600;
-}
-
-@media (max-width: 600px) {
-    nav.main-nav button {
-        flex: 1 1 100%;
-        text-align: center;
-    }
-
-    .sub-nav button, .tracks-nav button {
-        flex: 1 1 100%;
-    }
-
-    .theme-switch-wrapper {
-        position: static;
-        margin: 10px auto 0 auto;
-        display: flex;
-        justify-content: center;
-    }
 }
