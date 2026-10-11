@@ -13,12 +13,18 @@
             <h1>مدرسة الشهيد اسحق زكريا</h1>
             <p>منصتك التعليمية الرقمية للمستقبل</p>
             
-            <!-- 💡 زر الوضع الليلي في أعلى الجانب -->
-            <button class="theme-toggle-btn" onclick="toggleDarkMode()">💡 الوضع الليلي / الفاتح</button>
+            <!-- 🎛️ زر Toggle المجسم للوضع الليلي والنهاري (مثل الصورة) -->
+            <div class="theme-switch-wrapper">
+                <div class="theme-switch" onclick="toggleDarkMode()">
+                    <span class="icon sun-icon">☀️</span>
+                    <span class="icon moon-icon">🌙</span>
+                    <div class="ball"></div>
+                </div>
+            </div>
             
-            <!-- 🔍 حقل البحث الشامل في الهيدر ليعمل في كل الموقع -->
+            <!-- 🔍 حقل البحث اللحظي الشامل -->
             <div style="margin-top: 15px;">
-                <input type="text" id="globalSearchInput" class="search-input" placeholder="🔍 ابحث في كل محتويات الموقع (فيديوهات، ملازم، معلمين، جداول)..." onkeyup="globalSearch()">
+                <input type="text" id="globalSearchInput" class="search-input" placeholder="🔍 اكتب حرفاً للبحث الفوري في كافة المحتويات..." oninput="globalSearch()">
             </div>
         </div>
     </header>
