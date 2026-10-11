@@ -13,12 +13,17 @@
             <h1>مدرسة الشهيد اسحق زكريا</h1>
             <p>منصتك التعليمية الرقمية للمستقبل</p>
             
-            <!-- 🔵 زر الوضع الليلي بالطراز المطابق للصورة تماماً -->
+            <!-- 💡 زر الوضع الليلي في أعلى الجانب خالص -->
             <div class="switch-container">
                 <label class="switch">
                     <input type="checkbox" id="darkModeToggle" onchange="toggleDarkMode()">
                     <span class="slider"></span>
                 </label>
+            </div>
+            
+            <!-- 🔍 شريط البحث في مكانه تحت "منصتك التعليمية الرقمية للمستقبل" -->
+            <div class="header-search-wrapper">
+                <input type="text" id="mainHeaderSearchInput" class="search-input" placeholder="🔍 ابحث في جميع محتويات الموقع..." readonly onclick="openSearchPage()">
             </div>
         </div>
     </header>
@@ -29,14 +34,13 @@
         <button onclick="showSection('videos', this)">فيديوهات الشرح</button>
         <button onclick="showSection('pdfs', this)">الملازم والمذكرات</button>
         <button onclick="showSection('exams', this)">معلومات الامتحانات</button>
-        <button class="open-search-trigger" onclick="openSearchPage()">🔍 بحث في جهات المواضيع</button>
     </nav>
 
-    <!-- 🔍 صفحة واجهة البحث الجديدة (Search Page Overlay) -->
+    <!-- 🔍 واجهة صفحة البحث الجديدة (Overlay Search Page) -->
     <div id="searchPageOverlay" class="search-page-overlay">
         <div class="search-header-bar">
             <button class="back-btn" onclick="closeSearchPage()">➔</button>
-            <input type="text" id="overlaySearchInput" placeholder="ابحث في جميع الفيديوهات، الملازم، والمعلمين..." oninput="liveSearchProcess()">
+            <input type="text" id="overlaySearchInput" placeholder="اكتب أول حرف للبحث الفوري..." oninput="liveSearchProcess()">
             <button class="clear-btn" onclick="clearSearchInput()">✕</button>
         </div>
         <div id="searchResultsList" class="search-results-container">
@@ -307,7 +311,7 @@
     </div>
 
     <footer>
-        <p>جميع الحقوق محفوظة © مدرسة الشهيد اسحق زكريا[cite: 3] 2026</p>
+        <p>جميع الحقوق محفوظة © مدرسة الشهيد اسحق زكريا 2026</p>
         <a href="mailto:elshahid.isaac.zakaria.school@gmail.com">elshahid.isaac.zakaria.school@gmail.com</a> | 
         <a href="tel:0453731179">0453731179</a>
     </footer>
