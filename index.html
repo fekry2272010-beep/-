@@ -13,18 +13,12 @@
             <h1>مدرسة الشهيد اسحق زكريا</h1>
             <p>منصتك التعليمية الرقمية للمستقبل</p>
             
-            <!-- 🎛️ زر Toggle المجسم للوضع الليلي والنهاري (مثل الصورة) -->
-            <div class="theme-switch-wrapper">
-                <div class="theme-switch" onclick="toggleDarkMode()">
-                    <span class="icon sun-icon">☀️</span>
-                    <span class="icon moon-icon">🌙</span>
-                    <div class="ball"></div>
-                </div>
-            </div>
-            
-            <!-- 🔍 حقل البحث اللحظي الشامل -->
-            <div style="margin-top: 15px;">
-                <input type="text" id="globalSearchInput" class="search-input" placeholder="🔍 اكتب حرفاً للبحث الفوري في كافة المحتويات..." oninput="globalSearch()">
+            <!-- 🔵 زر الوضع الليلي بالطراز المطابق للصورة تماماً -->
+            <div class="switch-container">
+                <label class="switch">
+                    <input type="checkbox" id="darkModeToggle" onchange="toggleDarkMode()">
+                    <span class="slider"></span>
+                </label>
             </div>
         </div>
     </header>
@@ -35,7 +29,20 @@
         <button onclick="showSection('videos', this)">فيديوهات الشرح</button>
         <button onclick="showSection('pdfs', this)">الملازم والمذكرات</button>
         <button onclick="showSection('exams', this)">معلومات الامتحانات</button>
+        <button class="open-search-trigger" onclick="openSearchPage()">🔍 بحث في جهات المواضيع</button>
     </nav>
+
+    <!-- 🔍 صفحة واجهة البحث الجديدة (Search Page Overlay) -->
+    <div id="searchPageOverlay" class="search-page-overlay">
+        <div class="search-header-bar">
+            <button class="back-btn" onclick="closeSearchPage()">➔</button>
+            <input type="text" id="overlaySearchInput" placeholder="ابحث في جميع الفيديوهات، الملازم، والمعلمين..." oninput="liveSearchProcess()">
+            <button class="clear-btn" onclick="clearSearchInput()">✕</button>
+        </div>
+        <div id="searchResultsList" class="search-results-container">
+            <p style="text-align: center; color: #777; margin-top: 40px;">اكتب أول حرف لبدء البحث الفوري...</p>
+        </div>
+    </div>
 
     <div class="container content">
         
