@@ -19,6 +19,7 @@
     <nav class="main-nav">
         <button class="active" onclick="showSection('home', this)">الرئيسية</button>
         <button onclick="showSection('videos', this)">فيديوهات الشرح</button>
+        <button onclick="showSection('pdfs', this)">الملازم والمذكرات</button>
         <button onclick="showSection('exams', this)">معلومات الامتحانات</button>
     </nav>
 
@@ -29,28 +30,26 @@
             <h2>مرحباً بكم في منصتنا التعليمية</h2>
             <p style="font-size: 1.05rem; color: #333; font-weight: 500;">تهدف هذه المنصة إلى تسهيل العملية التعليمية لطلاب مدرسة الشهيد اسحاق زكريا، حيث يمكنك متابعة دروسك ومعرفة آخر مستجدات الجداول والامتحانات من مكان واحد.</p>
             
-            <!-- 🎬 فيديو تقديمي للمدرسة -->
-           <!-- 1. كارت الفيديو التقديمي -->
-<div class="card intro-video-card">
-  <h3>🎥 فيديو تقديمي عن مدرسة الشهيد اسحق زكريا</h3>
-  <div class="video-container">
-    <video controls width="100%" playsinline style="max-width: 100%; height: auto; border-radius: 8px;">
-      <source src="./123456.mp4" type="video/mp4">
-      المتصفح الخاص بك لا يدعم تشغيل الفيديو.
-    </video>
-  </div>
-</div>
+            <!-- فيديو تقديمي للمدرسة -->
+            <div class="card intro-video-card">
+              <h3>🎥 فيديو تقديمي عن مدرسة الشهيد اسحق زكريا</h3>
+              <div class="video-container">
+                <video controls width="100%" playsinline style="max-width: 100%; height: auto; border-radius: 8px;">
+                  <source src="./123456.mp4" type="video/mp4">
+                  المتصفح الخاص بك لا يدعم تشغيل الفيديو.
+                </video>
+              </div>
+            </div>
 
-<!-- 2. كارت التنبيه (مفصل وخارج كارت الفيديو) -->
-<div class="card warning-card">
-  <h3 style="margin-top: 0; color: #dc3545;">⚠️ تنبيه هام بشأن فيديوهات الشرح</h3>
-  <p style="margin-bottom: 0;">يرجى العلم أن فيديوهات الشرح لم يتم تصويرها بعد. سيتم تصويرها مع بداية العام الدراسي الجديد.</p>
-</div>
+            <!-- كارت التنبيه -->
+            <div class="card warning-card">
+              <h3 style="margin-top: 0; color: #dc3545;">⚠️ تنبيه هام بشأن فيديوهات الشرح</h3>
+              <p style="margin-bottom: 0;">يرجى العلم أن فيديوهات الشرح لم يتم تصويرها بعد. سيتم تصويرها مع بداية العام الدراسي الجديد.</p>
+            </div>
 
            <div class="features">
                 <div class="card" style="text-align: center;">
                     <h3>👤 مدير المدرسة</h3>
-                    <!-- 📸 مسار الصورة محلياً من المجلد الرئيسي -->
                     <img src="manager.jpg" alt="الأستاذ محمد عبدالعزيز نصار - مدير المدرسة" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin: 15px auto; display: block; border: 3px solid #dc3545; box-shadow: 0 4px 12px rgba(0,0,0,0.15);" loading="lazy">
                     <p style="font-weight: bold; margin-top: 10px; font-size: 1.1rem; color: #000;">الأستاذ / محمد عبدالعزيز نصار</p>
                 </div>
@@ -148,10 +147,9 @@
                 </div>
             </div>
 
-            <!-- المواد الإضافية الخاصة بالصف الثاني (مع شريط تنقل المسارات) -->
+            <!-- المواد الإضافية الخاصة بالصف الثاني -->
             <div id="grade2-extra-videos" class="videos-grid-container" style="display: none;">
                 
-                <!-- 🌟 شريط تنقل المسارات الإضافية -->
                 <div class="tracks-nav">
                     <button class="active-track" onclick="filterTrack('track-med', this)">🧬 مسار الطب وعلوم الحياة</button>
                     <button onclick="filterTrack('track-eng', this)">💻 مسار الهندسة وعلوم الحاسب</button>
@@ -159,7 +157,6 @@
                     <button onclick="filterTrack('track-arts', this)">🎨 مسار الآداب والفنون</button>
                 </div>
 
-                <!-- 1. مسار الطب وعلوم الحياة -->
                 <div id="track-med" class="videos-grid track-grid">
                     <div class="card video-card">
                         <h3>شرح مادة الرياضيات</h3>
@@ -177,7 +174,6 @@
                     </div>
                 </div>
 
-                <!-- 2. مسار الهندسة وعلوم الحاسب -->
                 <div id="track-eng" class="videos-grid track-grid" style="display: none;">
                     <div class="card video-card">
                         <h3>شرح مادة الكيمياء</h3>
@@ -195,7 +191,6 @@
                     </div>
                 </div>
 
-                <!-- 3. مسار الأعمال -->
                 <div id="track-biz" class="videos-grid track-grid" style="display: none;">
                     <div class="card video-card">
                         <h3>شرح مادة المحاسبة</h3>
@@ -213,7 +208,6 @@
                     </div>
                 </div>
 
-                <!-- 4. مسار الآداب والفنون -->
                 <div id="track-arts" class="videos-grid track-grid" style="display: none;">
                     <div class="card video-card">
                         <h3>شرح مادة علم النفس</h3>
@@ -231,6 +225,32 @@
                     </div>
                 </div>
 
+            </div>
+        </section>
+
+        <!-- قسم الملازم والمذكرات الجديد -->
+        <section id="pdfs" style="display:none;">
+            <h2>الملازم وأوراق العمل الدراسية</h2>
+            <p style="font-size: 1rem; color: #444; margin-bottom: 20px;">يمكنك الآن تحميل المذكرات والملازم بصيغة PDF لكل الصفوف والمواد الدراسية بضغطة زر واحدة.</p>
+            
+            <div class="pdf-grid">
+                <div class="card pdf-card">
+                    <h3>ملزمة قواعد اللغة العربية</h3>
+                    <p>الصف الأول الثانوي - الترم الأول</p>
+                    <a href="./files/arabic-grade1.pdf" download class="download-btn">📥 تحميل الملزمة (PDF)</a>
+                </div>
+
+                <div class="card pdf-card">
+                    <h3>أسئلة وتدريبات الكيمياء العامة</h3>
+                    <p>الصف الأول الثانوي - أ/ حسن علي</p>
+                    <a href="./files/chemistry-grade1.pdf" download class="download-btn">📥 تحميل الملزمة (PDF)</a>
+                </div>
+
+                <div class="card pdf-card">
+                    <h3>مذكرة وحدة الرياضيات الأولى</h3>
+                    <p>الصف الثاني الثانوي - مسار العام</p>
+                    <a href="./files/math-grade2.pdf" download class="download-btn">📥 تحميل الملزمة (PDF)</a>
+                </div>
             </div>
         </section>
 
