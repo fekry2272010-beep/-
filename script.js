@@ -94,30 +94,39 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 // ==========================================
-// 5. دالة البحث الشامل الفعالة لجميع محتويات الموقع
+// 5. دالة البحث الحي اللحظي (زي جهات الاتصال)
 // ==========================================
 function globalSearch() {
     let input = document.getElementById('globalSearchInput').value.toLowerCase().trim();
-    
-    if (input.length > 0) {
-        // إظهار جميع الأقسام عند بدء البحث لتشمل النتائج كل الموقع
-        const sections = document.querySelectorAll('.content > section');
-        sections.forEach(sec => sec.style.display = 'block');
-    } else {
-        // عند مسح البحث، نعود لعرض قسم الرئيسية الافتراضي
-        showSection('home', document.querySelector('nav.main-nav button'));
+    let sections = document.querySelectorAll('.content > section');
+
+    // إذا تم إفراغ خانة البحث نعود للوضع الطبيعي
+    if (input === "") {
+        sections.forEach(sec => sec.style.display = 'none');
+        document.getElementById('home').style.display = 'block';
+        
+        // إعادة إظهار كل العناصر بحالتها الافتراضية
+        document.querySelectorAll('.video-card, .pdf-card, .card, tbody tr, .videos-grid, .track-grid').forEach(el => {
+            el.style.display = "";
+        });
         return;
     }
 
-    // البحث الفوري في الفيديوهات، الملازم، بطاقات الرئيسية، وجداول الامتحانات
-    let searchableItems = document.querySelectorAll('.video-card, .pdf-card, .features .card, tbody tr, .manager-showcase-card');
+    // إظهار كافة الأقسام للفلترة الفورية
+    sections.forEach(sec => sec.style.display = 'block');
+    document.querySelectorAll('.videos-grid, .videos-grid-container, .track-grid').forEach(grid => {
+        grid.style.display = 'grid';
+    });
 
-    searchableItems.forEach(item => {
-        let textContent = item.textContent.toLowerCase();
-        if (textContent.includes(input)) {
-            item.style.display = "";
+    // فلترة حية وحظية لكل كارت أو نص يحتوي على الحرف المكتوب
+    let items = document.querySelectorAll('.video-card, .pdf-card, .features .card, tbody tr, .manager-showcase-card');
+
+    items.forEach(item => {
+        let text = item.textContent.toLowerCase();
+        if (text.includes(input)) {
+            item.style.display = ""; // إظهار العناصر المطابقة للحرف
         } else {
-            item.style.display = "none";
+            item.style.display = "none"; // إخفاء العناصر غير المطابقة
         }
     });
 }
