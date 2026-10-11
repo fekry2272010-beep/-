@@ -90,7 +90,7 @@ header p {
     transform: translateY(-2px);
 }
 
-/* --- 📌 شريط التنقل الرئيسي الأفقي (في مكانه الأصلي أعلى الصفحة) --- */
+/* --- 📌 شريط التنقل الرئيسي الأفقي --- */
 nav.main-nav {
     background: rgba(0, 0, 0, 0.92);
     backdrop-filter: blur(10px);
@@ -129,20 +129,6 @@ nav.main-nav button:hover, nav.main-nav button.active {
     box-shadow: 0 0 20px var(--neon-glow), 0 0 35px var(--neon-glow), inset 0 0 15px #ffffff;
     border-color: #ffffff;
     transform: translateY(-2px);
-}
-
-/* زر البحث السريع في الشريط الرئيسي */
-.nav-search-btn {
-    background: rgba(0, 240, 255, 0.1) !important;
-    border-color: #00f0ff !important;
-    color: #00f0ff !important;
-    box-shadow: 0 0 10px rgba(0, 240, 255, 0.3) !important;
-}
-
-.nav-search-btn:hover {
-    background: #00f0ff !important;
-    color: #000000 !important;
-    box-shadow: 0 0 20px #00f0ff !important;
 }
 
 /* المحتوى الرئيسي */
@@ -196,7 +182,7 @@ h2::after {
     box-shadow: 0 0 10px var(--neon-glow);
 }
 
-/* شريط البحث */
+/* شريط البحث الشامل */
 .search-container {
     margin: 15px 0 25px 0;
     text-align: center;
@@ -313,7 +299,7 @@ body.dark-mode .search-input {
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* --- 👤 كارت مدير المدرسة في المنتصف (تصميم فخم وأنيق) --- */
+/* --- 👤 كارت مدير المدرسة في المنتصف --- */
 .manager-showcase-card {
     max-width: 480px;
     margin: 35px auto;
