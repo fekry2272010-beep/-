@@ -65,29 +65,65 @@ header p {
     font-weight: 600;
 }
 
-/* --- 🌙 زر الوضع الليلي في أعلى الجانب --- */
-.theme-toggle-btn {
+/* --- 🎛️ زر التبديل بين النهار والليل (3D Toggle Switch بنفس شكل الصورة) --- */
+.theme-switch-wrapper {
     position: absolute;
     top: 20px;
     left: 20px;
-    background: rgba(0, 0, 0, 0.85);
-    border: 2px solid #ffbb00;
-    color: #ffffff;
-    padding: 8px 16px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: var(--transition);
-    box-shadow: 0 0 12px rgba(255, 187, 0, 0.3);
     z-index: 100;
 }
 
-.theme-toggle-btn:hover {
-    background: #ffbb00;
-    color: #000000;
-    box-shadow: 0 0 20px #ffbb00;
-    transform: translateY(-2px);
+.theme-switch {
+    position: relative;
+    width: 75px;
+    height: 38px;
+    background: #22252a;
+    border-radius: 30px;
+    padding: 4px;
+    cursor: pointer;
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.8), 0 0 12px rgba(255, 42, 75, 0.3);
+    border: 2px solid #333740;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: var(--transition);
+}
+
+.theme-switch .icon {
+    font-size: 16px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    z-index: 1;
+}
+
+.theme-switch .sun-icon {
+    color: #ffcc00;
+}
+
+.theme-switch .moon-icon {
+    color: #00f0ff;
+}
+
+/* الدائرة المتحركة بالداخل */
+.theme-switch .ball {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 28px;
+    height: 28px;
+    background: #ffffff;
+    border-radius: 50%;
+    transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .theme-switch .ball {
+    transform: translateX(37px);
+    background: #111418;
 }
 
 /* --- 📌 شريط التنقل الرئيسي الأفقي --- */
@@ -481,9 +517,10 @@ footer a {
         flex: 1 1 100%;
     }
 
-    .theme-toggle-btn {
+    .theme-switch-wrapper {
         position: static;
         margin: 10px auto 0 auto;
-        display: block;
+        display: flex;
+        justify-content: center;
     }
 }
