@@ -94,20 +94,28 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 // ==========================================
-// 5. دالة البحث الشامل والدقيق
+// 5. دالة البحث الشامل في جميع محتويات الموقع (Global Search)
 // ==========================================
 function globalSearch() {
     let input = document.getElementById('globalSearchInput').value.toLowerCase().trim();
-    let videoCards = document.querySelectorAll('#videos .video-card');
+    
+    if (input === "") {
+        // لو حقل البحث فارغ، نعيد عرض الكارتات والعناصر لحالتها الطبيعية
+        document.querySelectorAll('.video-card, .pdf-card, .features .card, tr').forEach(el => {
+            el.style.display = "";
+        });
+        return;
+    }
 
-    videoCards.forEach(card => {
-        let title = card.querySelector('h3').textContent.toLowerCase();
-        let desc = card.querySelector('p').textContent.toLowerCase();
+    // الانتقال التلقائي لقسم الفيديوهات أو البحث عبر الكارتات والبطاقات في الصفحة الحالية والمحتويات
+    let allSearchableItems = document.querySelectorAll('.video-card, .pdf-card, .features .card, tbody tr');
 
-        if (title.includes(input) || desc.includes(input)) {
-            card.style.display = "block";
+    allSearchableItems.forEach(item => {
+        let textContent = item.textContent.toLowerCase();
+        if (textContent.includes(input)) {
+            item.style.display = ""; // إظهار العنصر المطابق
         } else {
-            card.style.display = "none";
+            item.style.display = "none"; // إخفاء غير المطابق
         }
     });
 }
