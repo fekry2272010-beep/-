@@ -75,58 +75,82 @@ function filterTrack(trackId, buttonElement) {
 }
 
 // ==========================================
-// 4. دالة الوضع الليلي والنهاري (Dark / Light Mode)
+// 4. دالة الوضع الليلي والنهاري
 // ==========================================
 function toggleDarkMode() {
-    document.body.classList.toggle('dark-mode');
-    
-    if (document.body.classList.contains('dark-mode')) {
+    const toggleInput = document.getElementById('darkModeToggle');
+    if (toggleInput.checked) {
+        document.body.classList.add('dark-mode');
         localStorage.setItem('theme', 'dark');
     } else {
+        document.body.classList.remove('dark-mode');
         localStorage.setItem('theme', 'light');
     }
 }
 
 window.addEventListener('DOMContentLoaded', () => {
+    const toggleInput = document.getElementById('darkModeToggle');
     if (localStorage.getItem('theme') === 'dark') {
         document.body.classList.add('dark-mode');
+        if(toggleInput) toggleInput.checked = true;
     }
 });
 
 // ==========================================
-// 5. دالة البحث الحي اللحظي (زي جهات الاتصال)
+// 5. فتح وإغلاق واجهة صفحة البحث (Search Overlay)
 // ==========================================
-function globalSearch() {
-    let input = document.getElementById('globalSearchInput').value.toLowerCase().trim();
-    let sections = document.querySelectorAll('.content > section');
+function openSearchPage() {
+    document.getElementById('searchPageOverlay').style.display = 'flex';
+    document.getElementById('overlaySearchInput').focus();
+}
 
-    // إذا تم إفراغ خانة البحث نعود للوضع الطبيعي
-    if (input === "") {
-        sections.forEach(sec => sec.style.display = 'none');
-        document.getElementById('home').style.display = 'block';
-        
-        // إعادة إظهار كل العناصر بحالتها الافتراضية
-        document.querySelectorAll('.video-card, .pdf-card, .card, tbody tr, .videos-grid, .track-grid').forEach(el => {
-            el.style.display = "";
-        });
+function closeSearchPage() {
+    document.getElementById('searchPageOverlay').style.display = 'none';
+}
+
+function clearSearchInput() {
+    document.getElementById('overlaySearchInput').value = '';
+    liveSearchProcess();
+}
+
+// ==========================================
+// 6. دالة البحث اللحظي بالحرف (مثل تطبيق جهات الاتصال بالضبط)
+// ==========================================
+function liveSearchProcess() {
+    let input = document.getElementById('overlaySearchInput').value.toLowerCase().trim();
+    let resultsContainer = document.getElementById('searchResultsList');
+    resultsContainer.innerHTML = '';
+
+    if (input === '') {
+        resultsContainer.innerHTML = '<p style="text-align: center; color: #777; margin-top: 40px;">اكتب أول حرف لبدء البحث الفوري...</p>';
         return;
     }
 
-    // إظهار كافة الأقسام للفلترة الفورية
-    sections.forEach(sec => sec.style.display = 'block');
-    document.querySelectorAll('.videos-grid, .videos-grid-container, .track-grid').forEach(grid => {
-        grid.style.display = 'grid';
-    });
+    // تجميع كافة المواد، الفيديوهات، والملازم من الصفحة
+    let itemsToSearch = document.querySelectorAll('.video-card, .pdf-card, .manager-showcase-card, tbody tr');
+    let matchCount = 0;
 
-    // فلترة حية وحظية لكل كارت أو نص يحتوي على الحرف المكتوب
-    let items = document.querySelectorAll('.video-card, .pdf-card, .features .card, tbody tr, .manager-showcase-card');
+    itemsToSearch.forEach(item => {
+        let title = item.querySelector('h3, .manager-name, td') ? item.querySelector('h3, .manager-name, td').textContent : item.textContent;
+        let subtitle = item.querySelector('p') ? item.querySelector('p').textContent : '';
 
-    items.forEach(item => {
-        let text = item.textContent.toLowerCase();
-        if (text.includes(input)) {
-            item.style.display = ""; // إظهار العناصر المطابقة للحرف
-        } else {
-            item.style.display = "none"; // إخفاء العناصر غير المطابقة
+        if (title.toLowerCase().includes(input) || subtitle.toLowerCase().includes(input)) {
+            matchCount++;
+            let resultCard = document.createElement('div');
+            resultCard.className = 'search-result-item';
+            resultCard.innerHTML = `<h4>${title}</h4><p>${subtitle}</p>`;
+            
+            // عند الضغط على العنصر المطابق يتم إغلاق صفحة البحث
+            resultCard.onclick = () => {
+                closeSearchPage();
+                item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            };
+
+            resultsContainer.appendChild(resultCard);
         }
     });
+
+    if (matchCount === 0) {
+        resultsContainer.innerHTML = `<p style="text-align: center; color: #888; margin-top: 30px;">لا توجد نتائج تطابق "${input}"</p>`;
+    }
 }
