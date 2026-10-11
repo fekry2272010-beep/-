@@ -12,6 +12,12 @@
         <div class="container">
             <h1>مدرسة الشهيد اسحق زكريا</h1>
             <p>منصتك التعليمية الرقمية للمستقبل</p>
+            
+            <!-- 🔍 شريط البحث الشامل والدقيق -->
+            <div class="search-container">
+                <input type="text" id="globalSearchInput" class="search-input" placeholder="🔍 ابحث عن اسم الدرس أو المعلم..." onkeyup="globalSearch()">
+            </div>
+            
             <!-- 💡 زر الوضع الليلي في أعلى الجانب -->
             <button class="theme-toggle-btn" onclick="toggleDarkMode()">💡 الوضع الليلي / الفاتح</button>
         </div>
@@ -87,11 +93,7 @@
         <section id="videos" style="display:none;">
             <h2>فيديوهات الشرح الدراسية</h2>
 
-            <!-- 🔍 شريط البحث الشامل والدقيق -->
-            <div class="search-container">
-                <input type="text" id="globalSearchInput" class="search-input" placeholder="🔍 ابحث عن اسم الدرس أو المعلم..." onkeyup="globalSearch()">
-            </div>
-
+            
             <div class="sub-nav">
                 <button class="active-sub" onclick="filterGrade('grade1-videos', this)">الصف الأول الثانوي</button>
                 <button onclick="filterGrade('grade2-videos', this)">الصف الثاني الثانوي</button>
