@@ -9,21 +9,21 @@
 <body>
 
     <header>
-        <div class="container">
+        <div class="container" style="position: relative;">
             <h1>مدرسة الشهيد اسحق زكريا</h1>
             <p>منصتك التعليمية الرقمية للمستقبل</p>
             
-            <!-- 🔍 شريط البحث الشامل والدقيق -->
-            <div class="search-container">
-                <input type="text" id="globalSearchInput" class="search-input" placeholder="🔍 ابحث عن اسم الدرس أو المعلم..." onkeyup="globalSearch()">
-            </div>
-            
             <!-- 💡 زر الوضع الليلي في أعلى الجانب -->
             <button class="theme-toggle-btn" onclick="toggleDarkMode()">💡 الوضع الليلي / الفاتح</button>
+            
+            <!-- 🔍 حقل البحث الشامل في الهيدر ليعمل في كل الموقع -->
+            <div style="margin-top: 15px;">
+                <input type="text" id="globalSearchInput" class="search-input" placeholder="🔍 ابحث في كل محتويات الموقع (فيديوهات، ملازم، معلمين، جداول)..." onkeyup="globalSearch()">
+            </div>
         </div>
     </header>
 
-    <!-- 📌 شريط التنقل الرئيسي الأفقي (في مكانه الطبيعي الأعلى) -->
+    <!-- 📌 شريط التنقل الرئيسي الأفقي -->
     <nav class="main-nav">
         <button class="active" onclick="showSection('home', this)">الرئيسية</button>
         <button onclick="showSection('videos', this)">فيديوهات الشرح</button>
@@ -48,7 +48,7 @@
               </div>
             </div>
 
-            <!-- 👤 كارت مدير المدرسة في المنتصف وبشكل شيك -->
+            <!-- 👤 كارت مدير المدرسة في المنتصف -->
             <div class="manager-showcase-card">
                 <h3>👤 مدير المدرسة</h3>
                 <img src="manager.jpg" alt="الأستاذ محمد عبدالعزيز نصار - مدير المدرسة" loading="lazy">
@@ -89,11 +89,10 @@
             </div>
         </section>
 
-        <!-- قسم الفيديوهات مع شريط البحث الشامل -->
+        <!-- قسم الفيديوهات -->
         <section id="videos" style="display:none;">
             <h2>فيديوهات الشرح الدراسية</h2>
 
-            
             <div class="sub-nav">
                 <button class="active-sub" onclick="filterGrade('grade1-videos', this)">الصف الأول الثانوي</button>
                 <button onclick="filterGrade('grade2-videos', this)">الصف الثاني الثانوي</button>
