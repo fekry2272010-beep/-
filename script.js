@@ -114,7 +114,7 @@ function clearSearchInput() {
 }
 
 // ==========================================
-// 6. دالة البحث اللحظي مع الانتقال الصحيح والمباشر للعنصر
+// 6. دالة البحث اللحظي المضمونة (تفتح القسم وتوصلك لمكان العنصر بدقة)
 // ==========================================
 function liveSearchProcess() {
     let input = document.getElementById('overlaySearchInput').value.toLowerCase().trim();
@@ -126,10 +126,15 @@ function liveSearchProcess() {
         return;
     }
 
-    let itemsToSearch = document.querySelectorAll('.video-card, .pdf-card, .manager-showcase-card, tbody tr');
+    let itemsToSearch = document.querySelectorAll('.video-card, .pdf-card, .manager-showcase-card, tbody tr, .card');
     let matchCount = 0;
 
-    itemsToSearch.forEach(item => {
+    itemsToSearch.forEach((item, index) => {
+        // التأكد من أن العنصر له معرف فريد للوصول إليه
+        if (!item.id) {
+            item.id = 'search-item-' + index;
+        }
+
         let title = item.querySelector('h3, .manager-name, td') ? item.querySelector('h3, .manager-name, td').textContent : item.textContent;
         let subtitle = item.querySelector('p') ? item.querySelector('p').textContent : '';
 
@@ -139,21 +144,21 @@ function liveSearchProcess() {
             resultCard.className = 'search-result-item';
             resultCard.innerHTML = `<h4>${title}</h4><p>${subtitle}</p>`;
             
-            // عند النقر على النتيجة، نقوم بإظهار القسم التابع لها أولاً لكي يعمل الـ scroll بشكل صحيح ومضمون
+            // عند النقر على نتيجة البحث
             resultCard.onclick = () => {
                 closeSearchPage();
                 
-                // تحديد القسم الأب للعنصر وإظهاره
+                // 1. إظهار القسم الرئيسي التابع له العنصر
                 let parentSection = item.closest('section');
                 if (parentSection) {
                     const sections = document.querySelectorAll('.content > section');
                     sections.forEach(sec => sec.style.display = 'none');
                     parentSection.style.display = 'block';
 
-                    // تحديث زر القائمة النشطة إذا وُجد
+                    // تحديث زر القائمة النشطة
                     const navButtons = document.querySelectorAll('nav.main-nav button');
                     navButtons.forEach(btn => {
-                        if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(parentSection.id)) {
+                        if (btn.getAttribute('onclick') && btn.getAttribute('onclick'].includes(parentSection.id)) {
                             btn.classList.add('active');
                         } else {
                             btn.classList.remove('active');
@@ -161,17 +166,26 @@ function liveSearchProcess() {
                     });
                 }
 
-                // الانتقال اللحظي لمكان العنصر
+                // 2. إذا كان العنصر بداخل حاوية فرعية مخفية (مثل الفيديوهات الفرعية)، نظهرها أوتوماتيكياً
+                let parentGrid = item.closest('.videos-grid, .pdf-grid, .track-grid');
+                if (parentGrid) {
+                    parentGrid.style.display = 'grid';
+                    let parentContainer = parentGrid.closest('.videos-grid-container');
+                    if (parentContainer) parentContainer.style.display = 'block';
+                }
+
+                // 3. الانتقال السلس ومكان العنصر الفعلي مع تمييزه
                 setTimeout(() => {
                     item.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    // إعطاء وميض خفيف (Highlight) للعنصر لتمييزه
-                    item.style.transition = 'background 0.5s';
+                    
                     let originalBg = item.style.background;
-                    item.style.background = 'rgba(255, 42, 75, 0.25)';
+                    item.style.transition = 'background 0.4s ease';
+                    item.style.background = 'rgba(255, 42, 75, 0.35)';
+                    
                     setTimeout(() => {
                         item.style.background = originalBg;
-                    }, 1000);
-                }, 100);
+                    }, 1200);
+                }, 150);
             };
 
             resultsContainer.appendChild(resultCard);
