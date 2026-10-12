@@ -79,7 +79,7 @@ function filterTrack(trackId, buttonElement) {
 // ==========================================
 function toggleDarkMode() {
     const toggleInput = document.getElementById('darkModeToggle');
-    if (toggleInput.checked) {
+    if (toggleInput && toggleInput.checked) {
         document.body.classList.add('dark-mode');
         localStorage.setItem('theme', 'dark');
     } else {
@@ -92,7 +92,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const toggleInput = document.getElementById('darkModeToggle');
     if (localStorage.getItem('theme') === 'dark') {
         document.body.classList.add('dark-mode');
-        if(toggleInput) toggleInput.checked = true;
+        if (toggleInput) toggleInput.checked = true;
     }
 });
 
@@ -100,25 +100,38 @@ window.addEventListener('DOMContentLoaded', () => {
 // 5. فتح وإغلاق واجهة صفحة البحث (Search Overlay)
 // ==========================================
 function openSearchPage() {
-    document.getElementById('searchPageOverlay').style.display = 'flex';
-    document.getElementById('overlaySearchInput').focus();
+    const overlay = document.getElementById('searchPageOverlay');
+    if (overlay) {
+        overlay.style.display = 'flex';
+        const input = document.getElementById('overlaySearchInput');
+        if (input) input.focus();
+    }
 }
 
 function closeSearchPage() {
-    document.getElementById('searchPageOverlay').style.display = 'none';
+    const overlay = document.getElementById('searchPageOverlay');
+    if (overlay) overlay.style.display = 'none';
 }
 
 function clearSearchInput() {
-    document.getElementById('overlaySearchInput').value = '';
-    liveSearchProcess();
+    const input = document.getElementById('overlaySearchInput');
+    if (input) {
+        input.value = '';
+        liveSearchProcess();
+    }
 }
 
 // ==========================================
-// 6. دالة البحث اللحظي المضمونة (تفتح القسم وتوصلك لمكان العنصر بدقة)
+// 6. دالة البحث اللحظي والانتقال الدقيق للعنصر
 // ==========================================
 function liveSearchProcess() {
-    let input = document.getElementById('overlaySearchInput').value.toLowerCase().trim();
+    const inputElem = document.getElementById('overlaySearchInput');
+    if (!inputElem) return;
+
+    let input = inputElem.value.toLowerCase().trim();
     let resultsContainer = document.getElementById('searchResultsList');
+    if (!resultsContainer) return;
+
     resultsContainer.innerHTML = '';
 
     if (input === '') {
@@ -130,13 +143,14 @@ function liveSearchProcess() {
     let matchCount = 0;
 
     itemsToSearch.forEach((item, index) => {
-        // التأكد من أن العنصر له معرف فريد للوصول إليه
         if (!item.id) {
             item.id = 'search-item-' + index;
         }
 
-        let title = item.querySelector('h3, .manager-name, td') ? item.querySelector('h3, .manager-name, td').textContent : item.textContent;
-        let subtitle = item.querySelector('p') ? item.querySelector('p').textContent : '';
+        let titleElem = item.querySelector('h3, .manager-name, td');
+        let title = titleElem ? titleElem.textContent : item.textContent;
+        let subtitleElem = item.querySelector('p');
+        let subtitle = subtitleElem ? subtitleElem.textContent : '';
 
         if (title.toLowerCase().includes(input) || subtitle.toLowerCase().includes(input)) {
             matchCount++;
@@ -144,11 +158,10 @@ function liveSearchProcess() {
             resultCard.className = 'search-result-item';
             resultCard.innerHTML = `<h4>${title}</h4><p>${subtitle}</p>`;
             
-            // عند النقر على نتيجة البحث
             resultCard.onclick = () => {
                 closeSearchPage();
                 
-                // 1. إظهار القسم الرئيسي التابع له العنصر
+                // إظهار القسم الرئيسي التابع له العنصر
                 let parentSection = item.closest('section');
                 if (parentSection) {
                     const sections = document.querySelectorAll('.content > section');
@@ -156,43 +169,4 @@ function liveSearchProcess() {
                     parentSection.style.display = 'block';
 
                     // تحديث زر القائمة النشطة
-                    const navButtons = document.querySelectorAll('nav.main-nav button');
-                    navButtons.forEach(btn => {
-                        if (btn.getAttribute('onclick') && btn.getAttribute('onclick'].includes(parentSection.id)) {
-                            btn.classList.add('active');
-                        } else {
-                            btn.classList.remove('active');
-                        }
-                    });
-                }
-
-                // 2. إذا كان العنصر بداخل حاوية فرعية مخفية (مثل الفيديوهات الفرعية)، نظهرها أوتوماتيكياً
-                let parentGrid = item.closest('.videos-grid, .pdf-grid, .track-grid');
-                if (parentGrid) {
-                    parentGrid.style.display = 'grid';
-                    let parentContainer = parentGrid.closest('.videos-grid-container');
-                    if (parentContainer) parentContainer.style.display = 'block';
-                }
-
-                // 3. الانتقال السلس ومكان العنصر الفعلي مع تمييزه
-                setTimeout(() => {
-                    item.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    
-                    let originalBg = item.style.background;
-                    item.style.transition = 'background 0.4s ease';
-                    item.style.background = 'rgba(255, 42, 75, 0.35)';
-                    
-                    setTimeout(() => {
-                        item.style.background = originalBg;
-                    }, 1200);
-                }, 150);
-            };
-
-            resultsContainer.appendChild(resultCard);
-        }
-    });
-
-    if (matchCount === 0) {
-        resultsContainer.innerHTML = `<p style="text-align: center; color: #888; margin-top: 30px;">لا توجد نتائج تطابق "${input}"</p>`;
-    }
-}
+                    const navButtons
