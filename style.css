@@ -168,6 +168,24 @@ nav.main-nav {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     flex-wrap: wrap;
 }
+/* --- 🚨 شريط الإشعارات العاجلة المتحرك --- */
+.urgent-banner {
+    background: linear-gradient(90deg, #ff2a4b, #ff5722);
+    color: #ffffff;
+    padding: 10px 0;
+    font-weight: 700;
+    font-size: 0.95rem;
+    overflow: hidden;
+    white-space: nowrap;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 99;
+}
+
+.urgent-banner marquee {
+    width: 100%;
+}
 
 nav.main-nav button {
     background: rgba(15, 15, 15, 0.8);
