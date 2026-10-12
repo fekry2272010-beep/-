@@ -1,5 +1,35 @@
+document.addEventListener('DOMContentLoaded', () => {
+    // ==========================================
+    // 1. استعادة وضع الليل/النهار المحفوظ
+    // ==========================================
+    const toggleInput = document.getElementById('darkModeToggle');
+    if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+        if (toggleInput) toggleInput.checked = true;
+    }
+
+    // ربط زر الوضع الليلي برمجياً
+    if (toggleInput) {
+        toggleInput.addEventListener('change', () => {
+            if (toggleInput.checked) {
+                document.body.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.body.classList.remove('dark-mode');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    }
+
+    // ربط حقل البحث برمجياً ليفتح صفحة البحث بوضوح
+    const mainSearchInput = document.getElementById('mainHeaderSearchInput');
+    if (mainSearchInput) {
+        mainSearchInput.addEventListener('click', openSearchPage);
+    }
+});
+
 // ==========================================
-// 1. التنقل بين أقسام الموقع الرئيسية
+// 2. التنقل بين أقسام الموقع الرئيسية
 // ==========================================
 function showSection(sectionId, buttonElement) {
     const sections = document.querySelectorAll('.content > section');
@@ -23,7 +53,7 @@ function showSection(sectionId, buttonElement) {
 }
 
 // ==========================================
-// 2. التنقل بين أزرار الفيديوهات الفرعية
+// 3. التنقل بين أزرار الفيديوهات الفرعية
 // ==========================================
 function filterGrade(gradeId, buttonElement) {
     const videoGrids = document.querySelectorAll('.videos-grid:not(.track-grid), .videos-grid-container');
@@ -51,7 +81,7 @@ function filterGrade(gradeId, buttonElement) {
 }
 
 // ==========================================
-// 3. التنقل بين مسارات المواد الإضافية
+// 4. التنقل بين مسارات المواد الإضافية
 // ==========================================
 function filterTrack(trackId, buttonElement) {
     const trackGrids = document.querySelectorAll('.track-grid');
@@ -73,28 +103,6 @@ function filterTrack(trackId, buttonElement) {
         buttonElement.classList.add('active-track');
     }
 }
-
-// ==========================================
-// 4. دالة الوضع الليلي والنهاري
-// ==========================================
-function toggleDarkMode() {
-    const toggleInput = document.getElementById('darkModeToggle');
-    if (toggleInput && toggleInput.checked) {
-        document.body.classList.add('dark-mode');
-        localStorage.setItem('theme', 'dark');
-    } else {
-        document.body.classList.remove('dark-mode');
-        localStorage.setItem('theme', 'light');
-    }
-}
-
-window.addEventListener('DOMContentLoaded', () => {
-    const toggleInput = document.getElementById('darkModeToggle');
-    if (localStorage.getItem('theme') === 'dark') {
-        document.body.classList.add('dark-mode');
-        if (toggleInput) toggleInput.checked = true;
-    }
-});
 
 // ==========================================
 // 5. فتح وإغلاق واجهة صفحة البحث (Search Overlay)
@@ -161,12 +169,48 @@ function liveSearchProcess() {
             resultCard.onclick = () => {
                 closeSearchPage();
                 
-                // إظهار القسم الرئيسي التابع له العنصر
                 let parentSection = item.closest('section');
                 if (parentSection) {
                     const sections = document.querySelectorAll('.content > section');
                     sections.forEach(sec => sec.style.display = 'none');
                     parentSection.style.display = 'block';
 
-                    // تحديث زر القائمة النشطة
-                    const navButtons
+                    const navButtons = document.querySelectorAll('nav.main-nav button');
+                    navButtons.forEach(btn => {
+                        let onclickAttr = btn.getAttribute('onclick');
+                        if (onclickAttr && onclickAttr.includes(parentSection.id)) {
+                            btn.classList.add('active');
+                        } else {
+                            btn.classList.remove('active');
+                        }
+                    });
+                }
+
+                let parentGrid = item.closest('.videos-grid, .pdf-grid, .track-grid');
+                if (parentGrid) {
+                    parentGrid.style.display = 'grid';
+                    let parentContainer = parentGrid.closest('.videos-grid-container');
+                    if (parentContainer) parentContainer.style.display = 'block';
+                }
+
+                setTimeout(() => {
+                    item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    
+                    let originalBg = item.style.background;
+                    item.style.transition = 'background 0.4s ease';
+                    item.style.background = 'rgba(255, 42, 75, 0.35)';
+                    
+                    setTimeout(() => {
+                        item.style.background = originalBg;
+                    }, 1200);
+                }, 150);
+            };
+
+            resultsContainer.appendChild(resultCard);
+        }
+    });
+
+    if (matchCount === 0) {
+        resultsContainer.innerHTML = `<p style="text-align: center; color: #888; margin-top: 30px;">لا توجد نتائج تطابق "${input}"</p>`;
+    }
+}
