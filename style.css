@@ -53,7 +53,7 @@ header {
 
 header h1 {
     margin: 0;
-    font-size: clamp(1.4rem, 3.5vw, 2.5rem);
+    font-size: clamp(1.3rem, 3.5vw, 2.3rem);
     font-weight: 800;
     text-shadow: 0 0 10px rgba(255, 42, 75, 0.6);
 }
@@ -61,15 +61,15 @@ header h1 {
 header p {
     margin-top: 8px;
     color: #ff4d5e;
-    font-size: clamp(0.85rem, 2vw, 1.1rem);
+    font-size: clamp(0.85rem, 2vw, 1rem);
     font-weight: 600;
 }
 
-/* --- 🔵 زر التبديل للوضع الليلي (في أعلى الجانب خالص) --- */
+/* --- 💡 زر الوضع الليلي في أعلى الجانب خالص --- */
 .switch-container {
     position: absolute;
-    top: 20px;
-    left: 20px;
+    top: 15px;
+    left: 15px;
     display: flex;
     align-items: center;
     z-index: 100;
@@ -78,8 +78,8 @@ header p {
 .switch {
     position: relative;
     display: inline-block;
-    width: 54px;
-    height: 30px;
+    width: 50px;
+    height: 26px;
 }
 
 .switch input {
@@ -103,8 +103,8 @@ header p {
 .slider:before {
     position: absolute;
     content: "";
-    height: 22px;
-    width: 22px;
+    height: 18px;
+    width: 18px;
     left: 4px;
     bottom: 4px;
     background-color: #71717a;
@@ -122,16 +122,18 @@ input:checked + .slider:before {
     background-color: #ffffff;
 }
 
-/* --- 🔍 شريط البحث في الهيدر (تحت منصتك التعليمية) --- */
+/* --- 🔍 شريط البحث تحت منصتك التعليمية --- */
 .header-search-wrapper {
     margin: 15px auto 0 auto;
-    max-width: 550px;
+    max-width: 500px;
+    width: 100%;
+    padding: 0 10px;
 }
 
 .search-input {
     width: 100%;
-    padding: 12px 20px;
-    font-size: 1rem;
+    padding: 10px 18px;
+    font-size: 0.95rem;
     font-family: inherit;
     border: 2px solid var(--primary-red);
     border-radius: 30px;
@@ -149,7 +151,7 @@ input:checked + .slider:before {
     border-color: #ffffff;
 }
 
-/* --- 📌 شريط التنقل الرئيسي الأفقي --- */
+/* --- 📌 شريط التنقل الرئيسي الأفقي المتجاوب --- */
 nav.main-nav {
     background: rgba(0, 0, 0, 0.92);
     backdrop-filter: blur(10px);
@@ -157,8 +159,8 @@ nav.main-nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 12px;
-    padding: 12px 15px;
+    gap: 8px;
+    padding: 10px;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -171,21 +173,21 @@ nav.main-nav button {
     background: rgba(15, 15, 15, 0.8);
     border: 2px solid var(--primary-red);
     color: #ffffff;
-    padding: 8px 22px;
-    font-size: clamp(0.85rem, 1.5vw, 1rem);
+    padding: 8px 16px;
+    font-size: clamp(0.8rem, 1.2vw, 0.95rem);
     font-weight: 700;
     border-radius: 30px;
     cursor: pointer;
     transition: var(--transition);
     white-space: nowrap;
     text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-    box-shadow: 0 0 10px rgba(255, 42, 75, 0.3), inset 0 0 10px rgba(255, 42, 75, 0.2);
+    box-shadow: 0 0 10px rgba(255, 42, 75, 0.3);
 }
 
 nav.main-nav button:hover, nav.main-nav button.active {
     background: var(--primary-red);
     color: #ffffff;
-    box-shadow: 0 0 20px var(--neon-glow), 0 0 35px var(--neon-glow), inset 0 0 15px #ffffff;
+    box-shadow: 0 0 20px var(--neon-glow);
     border-color: #ffffff;
     transform: translateY(-2px);
 }
@@ -193,39 +195,34 @@ nav.main-nav button:hover, nav.main-nav button.active {
 /* المحتوى الرئيسي */
 .content {
     flex: 1;
-    margin-top: 25px;
-    margin-bottom: 40px;
+    margin: 20px auto 30px auto;
     background: var(--card-bg);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    padding: clamp(15px, 3vw, 30px);
+    padding: clamp(12px, 2.5vw, 25px);
     border-radius: var(--border-radius);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.5);
+    width: 95%;
+    max-width: 1100px;
     overflow: hidden;
 }
 
 @keyframes iphoneSlideSmooth {
-    0% {
-        opacity: 0;
-        transform: translateX(40px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
+    0% { opacity: 0; transform: translateX(30px); }
+    100% { opacity: 1; transform: translateX(0); }
 }
 
 .content > section {
-    animation: iphoneSlideSmooth 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: iphoneSlideSmooth 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 h2 {
     color: #000000;
-    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    font-size: clamp(1.2rem, 2.2vw, 1.6rem);
     margin-top: 0;
     position: relative;
-    padding-bottom: 10px;
+    padding-bottom: 8px;
 }
 
 h2::after {
@@ -233,14 +230,13 @@ h2::after {
     position: absolute;
     bottom: 0;
     right: 0;
-    width: 50px;
+    width: 45px;
     height: 4px;
     background: var(--primary-red);
     border-radius: 2px;
-    box-shadow: 0 0 10px var(--neon-glow);
 }
 
-/* --- 🔍 صفحة واجهة البحث (Search Overlay Page) --- */
+/* --- 🔍 صفحة البحث الشاملة (Overlay) --- */
 .search-page-overlay {
     position: fixed;
     top: 0;
@@ -251,22 +247,16 @@ h2::after {
     z-index: 99999;
     display: none;
     flex-direction: column;
-    padding: 15px;
+    padding: 12px;
     color: #ffffff;
-    animation: fadeInPage 0.25s ease-out;
-}
-
-@keyframes fadeInPage {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
 }
 
 .search-header-bar {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     background: #1e1e1e;
-    padding: 8px 15px;
+    padding: 8px 12px;
     border-radius: 30px;
     border: 1px solid #333;
 }
@@ -275,7 +265,7 @@ h2::after {
     background: none;
     border: none;
     color: #fff;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     cursor: pointer;
 }
 
@@ -285,7 +275,7 @@ h2::after {
     border: none;
     outline: none;
     color: #fff;
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-family: inherit;
 }
 
@@ -293,23 +283,23 @@ h2::after {
     background: none;
     border: none;
     color: #888;
-    font-size: 1.1rem;
+    font-size: 1rem;
     cursor: pointer;
 }
 
 .search-results-container {
     flex: 1;
     overflow-y: auto;
-    margin-top: 20px;
+    margin-top: 15px;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 12px;
 }
 
 .search-result-item {
     background: #1e1e1e;
-    padding: 15px;
-    border-radius: 12px;
+    padding: 12px 15px;
+    border-radius: 10px;
     border-right: 4px solid var(--primary-red);
     cursor: pointer;
     transition: var(--transition);
@@ -320,17 +310,18 @@ h2::after {
 }
 
 .search-result-item h4 {
-    margin: 0 0 5px 0;
+    margin: 0 0 4px 0;
     color: #00f0ff;
+    font-size: 1rem;
 }
 
 .search-result-item p {
     margin: 0;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: #aaa;
 }
 
-/* الوضع الليلي الدقيق */
+/* الوضع الليلي */
 body.dark-mode {
     background: #0a0a0a url('images/bg.jpg') no-repeat center center fixed;
     background-size: cover;
@@ -361,11 +352,11 @@ body.dark-mode td {
 .sub-nav, .tracks-nav {
     display: flex;
     justify-content: center;
-    gap: 12px;
+    gap: 10px;
     background: rgba(15, 15, 15, 0.85);
-    padding: 12px;
-    border-radius: 14px;
-    margin: 20px 0;
+    padding: 10px;
+    border-radius: 12px;
+    margin: 15px 0;
     flex-wrap: wrap;
 }
 
@@ -373,19 +364,18 @@ body.dark-mode td {
     background: rgba(0, 0, 0, 0.7);
     color: #ffffff;
     border: 2px solid #00f0ff;
-    padding: 9px 18px;
+    padding: 8px 14px;
+    font-size: 0.85rem;
     font-weight: 700;
     border-radius: 8px;
     cursor: pointer;
-    transition: var(--transition);
-    flex: 1 1 180px;
+    flex: 1 1 140px;
     text-align: center;
 }
 
 .sub-nav button:hover, .sub-nav button.active-sub {
     background: #00f0ff;
     color: #000000;
-    box-shadow: 0 0 20px #00f0ff;
 }
 
 .tracks-nav button {
@@ -395,46 +385,45 @@ body.dark-mode td {
 .tracks-nav button:hover, .tracks-nav button.active-track {
     background: #ba55d3;
     color: #ffffff;
-    box-shadow: 0 0 20px #ba55d3;
 }
 
 .intro-video-card {
-    max-width: 800px;
-    margin: 25px auto 30px auto;
+    max-width: 100%;
+    margin: 20px auto;
     text-align: center;
     border-top: 4px solid var(--primary-red);
 }
 
 .manager-showcase-card {
-    max-width: 480px;
-    margin: 35px auto;
+    max-width: 380px;
+    margin: 25px auto;
     text-align: center;
     background: rgba(255, 255, 255, 0.95);
     border-top: 4px solid var(--primary-red);
     border-radius: var(--border-radius);
-    padding: 25px 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    padding: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
 }
 
 .manager-showcase-card img {
-    width: 140px;
-    height: 140px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
     object-fit: cover;
-    margin: 12px auto 15px auto;
+    margin: 10px auto;
     display: block;
-    border: 4px solid var(--primary-red);
+    border: 3px solid var(--primary-red);
 }
 
 .features, .pdf-grid, .videos-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 15px;
 }
 
 .card, .pdf-card, .video-card {
     background: rgba(255, 255, 255, 0.88);
-    padding: 20px;
+    padding: 15px;
     border-radius: var(--border-radius);
 }
 
@@ -447,7 +436,8 @@ body.dark-mode td {
     background: rgba(0, 0, 0, 0.8);
     color: #ffffff;
     border: 2px solid #00f0ff;
-    padding: 10px 20px;
+    padding: 8px 16px;
+    font-size: 0.85rem;
     font-weight: 700;
     border-radius: 30px;
     text-decoration: none;
@@ -457,7 +447,7 @@ body.dark-mode td {
     position: relative;
     padding-bottom: 56.25%;
     height: 0;
-    border-radius: 12px;
+    border-radius: 10px;
     overflow: hidden;
 }
 
@@ -475,13 +465,14 @@ table {
     border-collapse: separate;
     border-spacing: 0;
     margin-top: 15px;
-    border-radius: 12px;
+    border-radius: 10px;
     overflow: hidden;
     background: rgba(255, 255, 255, 0.9);
+    font-size: 0.9rem;
 }
 
 th, td {
-    padding: 12px 10px;
+    padding: 10px 8px;
     text-align: center;
 }
 
@@ -496,20 +487,40 @@ td {
 
 .warning-card {
     background-color: rgba(255, 245, 245, 0.9);
-    border-right: 6px solid var(--primary-red);
+    border-right: 5px solid var(--primary-red);
 }
 
 footer {
     background: rgba(0, 0, 0, 0.92);
     color: #ffffff;
     text-align: center;
-    padding: 20px 15px;
+    padding: 15px;
     margin-top: auto;
     width: 100%;
+    font-size: 0.9rem;
     border-top: 3px solid var(--primary-red);
 }
 
 footer a {
     color: #ffffff;
     text-decoration: none;
+}
+
+/* توافق تام مع الهواتف المحمولة وضبط المقاسات أوتوماتيكياً */
+@media (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+    nav.main-nav {
+        padding: 8px 5px;
+    }
+    nav.main-nav button {
+        flex: 1 1 42%;
+        text-align: center;
+        padding: 7px 10px;
+        font-size: 0.8rem;
+    }
+    .header-search-wrapper {
+        padding: 0 5px;
+    }
 }
